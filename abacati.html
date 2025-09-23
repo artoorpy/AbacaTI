@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AbacaTI — Proteção Digital em Uberlândia</title>
+  <meta name="description" content="Soluções de TI, suporte remoto, segurança digital e nuvem para pequenas e médias empresas em Uberlândia." />
+  
+  <!-- Meta Tags Open Graph -->
+  <meta property="og:title" content="AbacaTI — Proteção Digital em Uberlândia">
+  <meta property="og:description" content="Soluções de TI, segurança digital, backup em nuvem, manutenção preventiva e consultoria para pequenas empresas. Planos acessíveis, sem burocracia, suporte remoto e presencial em Uberlândia e região.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abacati.com.br">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥑</text></svg>">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root{
+      --verde: #6ABF4B; --verde-escuro:#4A7C2C; --verde-claro:#D4EDCC; --amarelo:#FFD166; --amarelo-claro:#FFF3D6;
+      --cinza:#1E1E1E; --bg:#F5F7F6; --accent:#FFB74D;
+      --maxW:1200px; --pad:1.25rem; font-family: 'Inter', sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background: linear-gradient(135deg, #f0f7ed 0%, #e8f4e4 25%, #d4edcc 50%, #ffedd5 75%, #fff3d6 100%);
+      color:var(--cinza);
+      min-height: 100vh;
+      position: relative;
+    }
+    /* Efeito de textura sutil no background */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .container{max-width:var(--maxW);margin:0 auto;padding:0 var(--pad)}
+
+    header{
+      position:fixed;
+      left:0;
+      right:0;
+      top:0;
+      height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:60;
+      backdrop-filter:blur(6px);
+      background:rgba(255,255,255,0.92);
+      border-bottom: 1px solid rgba(106,191,75,0.1);
+    }
+    .nav{width:100%;max-width:var(--maxW);display:flex;justify-content:space-between;align-items:center;padding:0 1rem}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--verde),var(--verde-escuro));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-weight:700;
+      overflow:hidden;
+      transition: transform 0.3s ease;
+    }
+    .logo:hover{transform: scale(1.05);}
+    .brand h4{margin:0;font-size:1.05rem; color: var(--verde-escuro);}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{
+      color:var(--cinza);
+      text-decoration:none;
+      font-weight:600;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    nav a:hover{color: var(--verde); background: rgba(106,191,75,0.08);}
+
+    .hero{
+      min-height:88vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      padding-top:72px;
+      overflow:hidden;
+      background: linear-gradient(135deg, rgba(212,237,204,0.3) 0%, rgba(255,243,214,0.2) 100%);
+    }
+    /* Bolhas decorativas no hero */
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(106,191,75,0.08) 0%, transparent 70%);
+      top: 10%;
+      right: 10%;
+      z-index: -1;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,209,102,0.08) 0%, transparent 70%);
+      bottom: 20%;
+      left: 5%;
+      z-index: -1;
+    }
+    .hero-inner{
+      display:grid;
+      grid-template-columns:1fr 480px;
+      gap:40px;
+      align-items:center;
+      width:100%;
+      max-width:var(--maxW);
+      margin:0 auto;
+      padding:3rem 1rem;
+    }
+    .hero-left{padding-right:1rem}
+    .kicker{
+      display:inline-block;
+      background:rgba(106,191,75,0.15);
+      color:var(--verde-escuro);
+      padding:8px 14px;
+      border-radius:999px;
+      font-weight:600;
+      margin-bottom:1rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(106,191,75,0.2);
+    }
+    .hero-title{
+      font-size:clamp(2rem,4.5vw,3.4rem);
+      line-height:1.02;
+      margin:0 0 1rem;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .hero-title .highlight{color:var(--verde)}
+    .hero-lead{
+      font-size:1.05rem;
+      color:rgba(30,30,30,0.8);
+      margin-bottom:1.5rem;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .hero-cta{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .btn{
+      padding:14px 24px;
+      border-radius:10px;
+      border:0;
+      font-weight:700;
+      cursor:pointer;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+    .btn-primary{
+      background:var(--verde);
+      color:#fff;
+      box-shadow:0 10px 30px rgba(106,191,75,0.2);
+    }
+    .btn-primary:hover{
+      background:var(--verde-escuro);
+      transform: translateY(-2px);
+      box-shadow:0 15px 40px rgba(106,191,75,0.3);
+    }
+    .btn-ghost{
+      background:transparent;
+      color:var(--verde);
+      border:2px solid rgba(106,191,75,0.3);
+    }
+    .btn-ghost:hover{
+      background:rgba(106,191,75,0.08);
+      border-color: var(--verde);
+      transform: translateY(-2px);
+    }
+    .hero-visual{
+      position:relative;
+      height:480px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .side-img{
+      position:absolute;
+      width:220px;
+      filter:drop-shadow(0 20px 30px rgba(20,30,10,0.1));
+      border-radius: 12px;
+    }
+    .side-img.left{left:-40px;top:6%}
+    .side-img.right{right:-40px;bottom:6%}
+    .card-visual{
+      width:460px;
+      height:420px;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow: none;
+      transition: transform 0.5s ease;
+      /* Removida qualquer borda que possa criar contorno */
+      border: none;
+      /* Garantindo que não haja outline ou contorno */
+      outline: none;
+    }
+    .card-visual:hover{transform: scale(1.02);}
+    .card-visual img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      /* Removendo qualquer borda, outline ou contorno da imagem */
+      border: none;
+      outline: none;
+      /* Garantindo que a imagem preencha completamente o container */
+      display: block;
+    }
+
+    section{
+      padding:4.5rem 0;
+      position: relative;
+    }
+    /* Background diferenciado para cada seção */
+    #why {
+      background: linear-gradient(135deg, rgba(255,243,214,0.3) 0%, rgba(212,237,204,0.4) 100%);
+    }
+    #pricing {
+      background: linear-gradient(135deg, rgba(212,237,204,0.3) 0%, rgba(255,243,214,0.4) 100%);
+    }
+    #contact {
+      background: linear-gradient(135deg, rgba(255,243,214,0.4) 0%, rgba(212,237,204,0.3) 100%);
+    }
+    .section-head{
+      max-width:880px;
+      margin:0 auto 3rem;
+      text-align:center;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .section-head h2{
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: var(--cinza);
+    }
+    .section-head p{
+      font-size: 1.1rem;
+      color: rgba(30,30,30,0.7);
+      line-height: 1.6;
+    }
+    
+    .advantages-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:30px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+    .adv-card{
+      background:rgba(255,255,255,0.85);
+      border-radius:16px;
+      padding:2.5rem 2rem;
+      display:flex;
+      gap:22px;
+      align-items:flex-start;
+      box-shadow:0 10px 40px rgba(20,30,10,0.06);
+      transform:translateY(30px);
+      opacity:0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(106,191,75,0.1);
+      backdrop-filter: blur(5px);
+    }
+    .adv-card:hover{
+      transform: translateY(-5px);
+      box-shadow:0 20px 50px rgba(20,30,10,0.1);
+      background: rgba(255,255,255,0.95);
+    }
+    .adv-card img{
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .adv-card div h4{
+      margin: 0 0 0.8rem;
+      font-size: 1.3rem;
+      color: var(--verde-escuro);
+    }
+    .adv-card div p{
+      margin: 0;
+      color: rgba(30,30,30,0.8);
+      line-height: 1.6;
+    }
+
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:28px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+    .plan{
+      background:rgba(255,255,255,0.85);
+      border-radius:20px;
+      padding:2.5rem 2rem;
+      border:1px solid rgba(106,191,75,0.1);
+      box-shadow:0 20px 50px rgba(10,20,10,0.06);
+      transform:translateY(30px);
+      opacity:0;
+      transition: transform 0.3s ease;
+      position: relative;
+      backdrop-filter: blur(5px);
+      display: flex;
+      flex-direction: column;
+    }
+    .plan:hover{
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.95);
+    }
+    .plan.featured{
+      border:2px solid var(--verde);
+      transform: scale(1.02) translateY(30px);
+    }
+    .plan.featured:hover{transform: scale(1.02) translateY(-5px);}
+    .plan.featured::before{
+      content: "Mais Popular";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--verde);
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .plan h4{
+      margin:0 0 0.6rem;
+      font-size: 1.4rem;
+      color: var(--verde-escuro);
+    }
+    .price{
+      font-size:2rem;
+      color:var(--verde);
+      font-weight:800;
+      margin-bottom: 1.5rem;
+    }
+    .plan ul{
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+    }
+    .plan ul li{
+      padding: 8px 0;
+      position: relative;
+      padding-left: 24px;
+      color: rgba(30,30,30,0.8);
+    }
+    .plan ul li::before{
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--verde);
+      font-weight: bold;
+    }
+    .img-row{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin: 1.5rem 0 2rem;
+    }
+    .img-row img{
+      width:80px;
+      height:80px;
+      object-fit:contain;
+      transition:.3s;
+      border-radius: 10px;
+    }
+    .img-row img:hover{
+      transform:translateY(-6px) scale(1.05);
+      filter:brightness(1.05);
+    }
+    .plan .btn{
+      width: 100%;
+      padding: 14px;
+      margin-top: auto;
+    }
+    
+    /* Novos estilos para informações detalhadas dos planos */
+    .plan-details {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(106,191,75,0.2);
+    }
+    .plan-target {
+      font-weight: 600;
+      color: var(--verde-escuro);
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    .plan-desc {
+      font-size: 0.9rem;
+      color: rgba(30,30,30,0.7);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .plan-features {
+      margin-bottom: 1.5rem;
+    }
+    .plan-features h5 {
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+      color: var(--verde-escuro);
+    }
+    .plan-features ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+    .plan-features li {
+      padding: 4px 0;
+      font-size: 0.85rem;
+      color: rgba(30,30,30,0.7);
+      line-height: 1.4;
+    }
+    .plan-features li::before {
+      content: "•";
+      color: var(--verde);
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    .plan-differential {
+      background: rgba(106,191,75,0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    .plan-differential strong {
+      color: var(--verde-escuro);
+      font-size: 0.9rem;
+    }
+    .plan-differential p {
+      margin: 0.3rem 0 0;
+      font-size: 0.85rem;
+      color: rgba(30,30,30,0.7);
+      line-height: 1.4;
+    }
+
+    .final-cta{
+      max-width:900px;
+      margin:0 auto;
+      text-align:center;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .final-cta h2{
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: var(--cinza);
+    }
+    .final-cta p{
+      font-size: 1.1rem;
+      color: rgba(30,30,30,0.7);
+      margin-bottom: 2rem;
+    }
+    
+    /* Estilo para centralizar os botões no final da página */
+    .final-cta .hero-cta {
+      justify-content: center;
+    }
+    
+    footer{
+      padding:3rem 0;
+      text-align:center;
+      color:#6b6b6b;
+      border-top: 1px solid rgba(106,191,75,0.1);
+      margin-top: 2rem;
+      background: rgba(255,255,255,0.7);
+    }
+    footer .container{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    footer p{margin: 0;}
+    .footer-contact{
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .footer-contact a{
+      color: #6b6b6b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-contact a:hover{color: var(--verde);}
+
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+    .whatsapp-float:hover {
+      background-color: #128C7E;
+      transform: scale(1.1);
+      box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* Modal de avaliação */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 0;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      animation: modalFade 0.3s ease;
+      overflow: hidden;
+    }
+    @keyframes modalFade {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal-header {
+      background: linear-gradient(135deg, var(--verde), var(--verde-escuro));
+      color: white;
+      padding: 1.5rem 2rem;
+    }
+    .modal-header h3 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+    .modal-body {
+      padding: 2rem;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--cinza);
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--verde);
+      box-shadow: 0 0 0 3px rgba(106,191,75,0.1);
+    }
+    .modal-footer {
+      padding: 0 2rem 2rem;
+      display: flex;
+      gap: 12px;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .close:hover { color: #000; }
+
+    @media(max-width:980px){
+      .hero-inner{grid-template-columns:1fr; gap: 30px;}
+      .hero-visual{order:-1; height: 350px;}
+      .advantages-grid{grid-template-columns:1fr; gap: 20px;}
+      .pricing-grid{grid-template-columns:1fr; gap: 20px;}
+      .side-img{display:none}
+      .card-visual{width: 100%; max-width: 400px; height: 300px;}
+      .hero-left{text-align: center; padding-right: 0;}
+      .hero-cta{justify-content: center; flex-wrap: wrap;}
+      .footer-contact{flex-direction: column; gap: 0.5rem;}
+    }
+    
+    @media(max-width:480px){
+      .hero-inner{padding: 2rem 1rem;}
+      .hero-visual{height: 250px;}
+      .card-visual{height: 220px;}
+      .btn{padding: 12px 18px; font-size: 0.9rem;}
+      .adv-card, .plan{padding: 1.5rem 1.2rem;}
+      .section-head h2{font-size: 1.8rem;}
+      .final-cta h2{font-size: 1.8rem;}
+      .whatsapp-float{width: 50px; height: 50px; font-size: 24px; bottom: 20px; right: 20px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/5534999935533?text=Olá! Gostaria de saber mais sobre os serviços da AbacaTI." class="whatsapp-float" target="_blank">
+    <span style="font-size: 30px;">💬</span>
+  </a>
+
+  <!-- Modal de Avaliação -->
+  <div id="evaluationModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h3>Solicitar Avaliação Gratuita</h3>
+      </div>
+      <div class="modal-body">
+        <form id="evaluationForm">
+          <div class="form-group">
+            <label for="name">Nome completo</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="company">Empresa</label>
+            <input type="text" id="company" name="company">
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" rows="4" placeholder="Conte-nos sobre suas necessidades de TI..."></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" id="closeModal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="submitForm">Enviar Solicitação</button>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="nav container">
+      <div class="brand">
+        <div class="logo"><img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 23_53_03.png" alt="Logo AbacaTI" style="width:100%;height:100%;object-fit:contain"></div>
+        <h4>AbacaTI</h4>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Início</a></li>
+          <li><a href="#why">Por que</a></li>
+          <li><a href="#pricing">Planos</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="hero" id="home">
+    <div class="hero-inner container">
+      <div class="hero-left">
+        <div class="kicker">Proteção local • Uberlândia</div>
+        <h1 class="hero-title" id="heroTitle">
+          AbacaTI - <span class="highlight">O seu TI</span> de confiança
+        </h1>
+        <p class="hero-lead">Suporte remoto, segurança e nuvem — planos pensados para micro e pequenas empresas que precisam de TI confiável sem burocracia.</p>
+        <div class="hero-cta">
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar os serviços da AbacaTI." class="btn btn-primary" target="_blank">Quero proteção</a>
+          <button class="btn btn-ghost" id="openForm">Solicitar avaliação</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img class="side-img left" src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_34_41.png" alt="Abacate no PC" loading="lazy">
+        <div class="card-visual"><img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_31_57.png" alt="Abacate com escudo" loading="lazy"></div>
+        <img class="side-img right" src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_40_34.png" alt="Abacate segurança" loading="lazy">
+      </div>
+    </div>
+  </main>
+
+  <section id="why">
+    <div class="container">
+      <div class="section-head"><h2>Por que escolher a AbacaTI?</h2><p>Combinação de suporte rápido, prevenção e estratégia — para que você foque no que importa.</p></div>
+      <div class="advantages-grid">
+        <div class="adv-card">
+          <img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_23_12.png" alt="Suporte ágil" width="70" loading="lazy">
+          <div>
+            <h4>Suporte ágil</h4>
+            <p>Tempo médio de resposta baixo para manter sua operação funcionando. Atendimento remoto rápido e acompanhamento contínuo.</p>
+          </div>
+        </div>
+        <div class="adv-card">
+          <img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_37_31.png" alt="Segurança" width="70" loading="lazy">
+          <div>
+            <h4>Segurança por design</h4>
+            <p>Proteção pensada desde o início, com firewalls, antivírus e boas práticas aplicadas. Configuração de firewalls, antivírus e testes periódicos.</p>
+          </div>
+        </div>
+        <div class="adv-card">
+          <img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_34_41.png" alt="Nuvem" width="70" loading="lazy">
+          <div>
+            <h4>Nuvem sem dor</h4>
+            <p>Implantação simples e suporte em Google Workspace / Microsoft 365, com backup automatizado. Reduzindo risco de perda de dados.</p>
+          </div>
+        </div>
+        <div class="adv-card">
+          <img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_31_57.png" alt="Proteção contínua" width="70" loading="lazy">
+          <div>
+            <h4>Proteção contínua</h4>
+            <p>Monitoramento ativo e respostas rápidas em caso de incidentes. Monitoramento constante para detectar problemas antes que afetem o negócio.</p>
+          </div>
+        </div>
+        <div class="adv-card">
+          <img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_44_44.png" alt="Atendimento humano" width="70" loading="lazy">
+          <div>
+            <h4>Atendimento humano e local</h4>
+            <p>Estamos em Uberlândia e falamos a língua do seu negócio. Suporte personalizado com profissionais que entendem suas necessidades.</p>
+          </div>
+        </div>
+        <div class="adv-card">
+          <img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_52_39.png" alt="Transparência" width="70" loading="lazy">
+          <div>
+            <h4>Transparência total</h4>
+            <p>Planos claros, preços fixos e sem letras miúdas. Você sabe exatamente o que está contratando e quanto vai pagar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="container">
+      <div class="section-head"><h2>Nossos Planos</h2><p>Escolha o nível de proteção que faz sentido para o seu negócio — transparência e suporte real.</p></div>
+      <div class="pricing-grid">
+        <div class="plan">
+          <h4>Semente</h4>
+          <div class="price">R$150/mês</div>
+          <ul>
+            <li>Suporte remoto essencial</li>
+            <li>Backup em nuvem básico</li>
+            <li>Monitoramento inicial</li>
+            <li>Relatórios mensais</li>
+          </ul>
+          
+          <div class="plan-details">
+            <div class="plan-target">Para quem é: Microempresas e profissionais autônomos que precisam de proteção digital básica sem gastar muito.</div>
+            <div class="plan-desc">Ideal para quem está começando e precisa de tranquilidade digital sem burocracia.</div>
+            
+            <div class="plan-features">
+              <h5>O que inclui:</h5>
+              <ul>
+                <li>Suporte remoto essencial: resolução rápida de problemas comuns (e-mail, impressoras, sistemas travando)</li>
+                <li>Backup em nuvem básico: armazenamento automático de arquivos importantes para evitar perda de dados</li>
+                <li>Monitoramento inicial: verificação periódica de desempenho e segurança dos equipamentos</li>
+                <li>Relatórios mensais: visão clara da saúde dos sistemas e recomendações simples de melhoria</li>
+              </ul>
+            </div>
+            
+            <div class="plan-differential">
+              <strong>Diferencial:</strong>
+              <p>Ideal para quem está começando e precisa de tranquilidade digital sem burocracia.</p>
+            </div>
+          </div>
+          
+          <div class="img-row">
+            <img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_40_34.png" alt="avocado" loading="lazy">
+          </div>
+          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Semente da AbacaTI." class="btn btn-primary" target="_blank">Contratar</a>
+        </div>
+        
+        <div class="plan featured">
+          <h4>Crescimento</h4>
+          <div class="price">R$299/mês</div>
+          <ul>
+            <li>Tudo do Semente</li>
+            <li>Manutenção preventiva</li>
+            <li>Firewall e antivírus</li>
+            <li>Backup ampliado</li>
+            <li>Suporte prioritário</li>
+          </ul>
+          
+          <div class="plan-details">
+            <div class="plan-target">Para quem é: Pequenas empresas em expansão que precisam de mais segurança e continuidade.</div>
+            <div class="plan-desc">O equilíbrio perfeito entre custo e segurança, garantindo que a empresa cresça com estabilidade.</div>
+            
+            <div class="plan-features">
+              <h5>O que inclui:</h5>
+              <ul>
+                <li>Tudo do Semente</li>
+                <li>Manutenção preventiva: atualizações regulares e otimização dos sistemas para evitar falhas</li>
+                <li>Firewall e antivírus profissionais: proteção ativa contra vírus, invasões e ataques</li>
+                <li>Backup ampliado: maior capacidade e frequência de cópias de segurança</li>
+                <li>Suporte prioritário: atendimento mais rápido em caso de chamados</li>
+              </ul>
+            </div>
+            
+            <div class="plan-differential">
+              <strong>Diferencial:</strong>
+              <p>O equilíbrio perfeito entre custo e segurança, garantindo que a empresa cresça com estabilidade.</p>
+            </div>
+          </div>
+          
+          <div class="img-row">
+            <img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_44_44.png" alt="avocado" loading="lazy">
+            <img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_20_42.png" alt="avocado" loading="lazy">
+          </div>
+          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Crescimento da AbacaTI." class="btn btn-primary" target="_blank">Contratar</a>
+        </div>
+        
+        <div class="plan">
+          <h4>Raiz</h4>
+          <div class="price">R$599/mês</div>
+          <ul>
+            <li>Tudo do Crescimento</li>
+            <li>Suporte remoto + presencial</li>
+            <li>Monitoramento 24/7</li>
+            <li>Testes de vulnerabilidade</li>
+            <li>Consultoria estratégica</li>
+          </ul>
+          
+          <div class="plan-details">
+            <div class="plan-target">Para quem é: Empresas que não podem parar e precisam de TI estratégico, com alta proteção.</div>
+            <div class="plan-desc">Solução completa para empresas que dependem da tecnologia e precisam de alta disponibilidade.</div>
+            
+            <div class="plan-features">
+              <h5>O que inclui:</h5>
+              <ul>
+                <li>Tudo do Crescimento</li>
+                <li>Suporte remoto + presencial: atendimento direto em Uberlândia quando necessário</li>
+                <li>Monitoramento 24/7: acompanhamento contínuo para detectar problemas antes que afetem o negócio</li>
+                <li>Testes de vulnerabilidade: análise de segurança periódica para identificar e corrigir riscos</li>
+                <li>Consultoria estratégica: orientações de TI alinhadas ao crescimento e metas da empresa</li>
+              </ul>
+            </div>
+            
+            <div class="plan-differential">
+              <strong>Diferencial:</strong>
+              <p>Solução completa para empresas que dependem da tecnologia e precisam de alta disponibilidade.</p>
+            </div>
+          </div>
+          
+          <div class="img-row">
+            <img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_23_12.png" alt="avocado" loading="lazy">
+            <img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 22_37_31.png" alt="avocado" loading="lazy">
+            <img src="abacatimagens\ChatGPT Image 22 de set. de 2025, 22_52_39.png" alt="avocado" loading="lazy">
+          </div>
+          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Raiz da AbacaTI." class="btn btn-primary" target="_blank">Contratar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="final-cta">
+        <h2>Pronto para proteger seu negócio?</h2>
+        <p>Fale conosco e descubra como a AbacaTI pode ajudar sua empresa a crescer com segurança.</p>
+        <div class="hero-cta">
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de conversar sobre os serviços da AbacaTI." class="btn btn-primary" target="_blank">Falar no WhatsApp</a>
+          <button class="btn btn-ghost" id="openForm2">Solicitar avaliação</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>AbacaTI - Suporte de TI em Uberlândia</p>
+      <div class="footer-contact">
+        <a href="https://maps.google.com/?q=Uberlândia+MG" target="_blank">Uberlândia, MG</a>
+      </div>
+      <p>&copy; 2025 AbacaTI. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Animações com GSAP
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animação do hero
+      gsap.to('#heroTitle', {duration: 0.8, opacity: 1, y: 0, delay: 0.2});
+      gsap.to('.hero-lead', {duration: 0.8, opacity: 1, y: 0, delay: 0.4});
+      gsap.to('.hero-cta', {duration: 0.8, opacity: 1, y: 0, delay: 0.6});
+      
+      // Animações de scroll para as seções
+      gsap.utils.toArray('.section-head').forEach(section => {
+        gsap.to(section, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+      });
+      
+      gsap.utils.toArray('.adv-card').forEach((card, i) => {
+        gsap.to(card, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: i * 0.1,
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+      });
+      
+      gsap.utils.toArray('.plan').forEach((plan, i) => {
+        gsap.to(plan, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: i * 0.1,
+          scrollTrigger: {
+            trigger: plan,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+      });
+      
+      gsap.to('.final-cta', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: '.final-cta',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+      
+      // Modal de avaliação
+      const modal = document.getElementById('evaluationModal');
+      const openFormBtn = document.getElementById('openForm');
+      const openFormBtn2 = document.getElementById('openForm2');
+      const closeBtn = document.querySelector('.close');
+      const closeModalBtn = document.getElementById('closeModal');
+      
+      function openModal() {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+      
+      function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+      
+      openFormBtn.addEventListener('click', openModal);
+      openFormBtn2.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
+      
+      window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+          closeModal();
+        }
+      });
+      
+      // Envio do formulário
+      document.getElementById('submitForm').addEventListener('click', function() {
+        const form = document.getElementById('evaluationForm');
+        if (form.checkValidity()) {
+          // Simulação de envio
+          alert('Obrigado! Sua solicitação foi enviada. Entraremos em contato em breve.');
+          closeModal();
+          form.reset();
+        } else {
+          alert('Por favor, preencha todos os campos obrigatórios.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
