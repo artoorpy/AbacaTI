@@ -83,8 +83,10 @@
     }
     .logo:hover{transform: scale(1.05);}
     .brand h4{margin:0;font-size:1.05rem; color: var(--verde-escuro);}
-    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
-    nav a{
+    
+    /* Menu Desktop */
+    .desktop-nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    .desktop-nav a{
       color:var(--cinza);
       text-decoration:none;
       font-weight:600;
@@ -92,7 +94,72 @@
       border-radius: 6px;
       transition: all 0.3s ease;
     }
-    nav a:hover{color: var(--verde); background: rgba(106,191,75,0.08);}
+    .desktop-nav a:hover{color: var(--verde); background: rgba(106,191,75,0.08);}
+    
+    /* Menu Mobile - Hamburger */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--cinza);
+      padding: 8px;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    
+    .mobile-menu-btn:hover {
+      background: rgba(106,191,75,0.08);
+    }
+    
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(10px);
+      z-index: 50;
+      padding: 1rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-top: 1px solid rgba(106,191,75,0.1);
+    }
+    
+    .mobile-nav.active {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .mobile-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .mobile-nav a {
+      display: block;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: var(--cinza);
+      font-weight: 600;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav a:hover {
+      background: rgba(106,191,75,0.08);
+      color: var(--verde);
+    }
 
     .hero{
       min-height:88vh;
@@ -216,6 +283,10 @@
       width:220px;
       filter:drop-shadow(0 20px 30px rgba(20,30,10,0.1));
       border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+    .side-img:hover {
+      transform: translateY(-5px);
     }
     .side-img.left{left:-40px;top:6%}
     .side-img.right{right:-40px;bottom:6%}
@@ -226,9 +297,7 @@
       overflow:hidden;
       box-shadow: none;
       transition: transform 0.5s ease;
-      /* Removida qualquer borda que possa criar contorno */
       border: none;
-      /* Garantindo que não haja outline ou contorno */
       outline: none;
     }
     .card-visual:hover{transform: scale(1.02);}
@@ -236,10 +305,8 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      /* Removendo qualquer borda, outline ou contorno da imagem */
       border: none;
       outline: none;
-      /* Garantindo que a imagem preencha completamente o container */
       display: block;
     }
 
@@ -665,13 +732,13 @@
         font-size: 0.9rem;
       }
       
-      nav ul {
-        gap: 10px;
+      /* Menu Mobile */
+      .desktop-nav {
+        display: none;
       }
       
-      nav a {
-        padding: 6px 10px;
-        font-size: 0.85rem;
+      .mobile-menu-btn {
+        display: block;
       }
       
       /* Hero mobile */
@@ -698,14 +765,29 @@
         order: 1;
       }
       
+      /* Imagens flutuantes no mobile */
       .side-img {
-        display: none;
+        display: block;
+        width: 120px;
+        max-width: 120px;
+        z-index: 5;
+      }
+      
+      .side-img.left {
+        left: 5px;
+        top: 10%;
+      }
+      
+      .side-img.right {
+        right: 5px;
+        bottom: 10%;
       }
       
       .card-visual {
         width: 100%;
         max-width: 400px;
         height: 250px;
+        z-index: 10;
       }
       
       .hero-title {
@@ -769,10 +851,10 @@
         font-size: 1.2rem;
       }
       
-      /* Grid de preços mobile */
+      /* Grid de preços mobile - 2 colunas */
       .pricing-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
       }
       
       .plan {
@@ -862,6 +944,11 @@
         height: 200px;
       }
       
+      .side-img {
+        width: 100px;
+        max-width: 100px;
+      }
+      
       .hero-title {
         font-size: 1.6rem;
       }
@@ -876,6 +963,11 @@
       
       .adv-card, .plan {
         padding: 1.2rem 1rem;
+      }
+      
+      /* Em telas muito pequenas, voltar para 1 coluna nos planos */
+      .pricing-grid {
+        grid-template-columns: 1fr;
       }
     }
     
@@ -967,7 +1059,9 @@
         <div class="logo"><img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 23_53_03.png" alt="Logo AbacaTI" style="width:100%;height:100%;object-fit:contain"></div>
         <h4>AbacaTI</h4>
       </div>
-      <nav>
+      
+      <!-- Menu Desktop -->
+      <nav class="desktop-nav">
         <ul>
           <li><a href="#home">Início</a></li>
           <li><a href="#why">Por que</a></li>
@@ -975,7 +1069,20 @@
           <li><a href="#contact">Contato</a></li>
         </ul>
       </nav>
+      
+      <!-- Menu Mobile Hamburger -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
     </div>
+    
+    <!-- Menu Mobile -->
+    <nav class="mobile-nav" id="mobileNav">
+      <ul>
+        <li><a href="#home">Início</a></li>
+        <li><a href="#why">Por que</a></li>
+        <li><a href="#pricing">Planos</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main class="hero" id="home">
@@ -1309,6 +1416,37 @@
           form.reset();
         } else {
           alert('Por favor, preencha todos os campos obrigatórios.');
+        }
+      });
+      
+      // Menu Mobile
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileLinks = mobileNav.querySelectorAll('a');
+      
+      function toggleMobileMenu() {
+        mobileNav.classList.toggle('active');
+        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+      }
+      
+      function closeMobileMenu() {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+      
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+      
+      // Fechar menu ao clicar em um link
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+      
+      // Fechar menu ao clicar fora dele
+      document.addEventListener('click', function(event) {
+        if (mobileNav.classList.contains('active') && 
+            !mobileNav.contains(event.target) && 
+            event.target !== mobileMenuBtn) {
+          closeMobileMenu();
         }
       });
       
