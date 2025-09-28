@@ -21,21 +21,29 @@
 
   <style>
     :root{
-      --azul-digital: #007AFF; --azul-marinho: #003B73; --cinza-claro: #EBF2F7; --amarelo-dourado: #FFC300; --fundo-base: #F5F7FA;
-      --cinza:#1E1E1E; --bg:#F5F7F6; --accent:#FFB74D;
+      /* CORES HARPIATI (Cinza, Amarelo, Preto) */
+      --verde: #FFC300; /* Novo Amarelo Harpia (Principal) */
+      --verde-escuro:#1E1E1E; /* Novo Preto/Grafite (Escuro) */
+      --verde-claro:#F0F0F0; /* Novo Cinza Claro (Background Suave) */
+      --amarelo: #FFC300; /* Mantido como Amarelo Acento */
+      --amarelo-claro:#FFFFFF; /* Novo Branco Puro (Fundo Base) */
+      --cinza:#1E1E1E; /* Grafite para textos */
+      --bg:#FFFFFF; /* Fundo principal */
+      --accent:#FFC300; /* Acento (Amarelo) */
       --maxW:1200px; --pad:1.25rem; font-family: 'Inter', sans-serif;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      background: linear-gradient(135deg, #f0f7fa 0%, #e8f2f7 25%, #ebf2f7 50%, #f5f7fa 75%, #f5f7fa 100%);
+      /* Gradiente sutil Cinza/Amarelo */
+      background: linear-gradient(135deg, #F0F0F0 0%, #FFFFFF 50%, #FFC3001A 100%);
       color:var(--cinza);
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
     }
-    /* Efeito de textura sutil no background */
+    /* Efeito de textura sutil no background (ajustando cores para serem mais neutras) */
     body::before {
       content: "";
       position: absolute;
@@ -44,8 +52,8 @@
       right: 0;
       bottom: 0;
       background-image: 
-        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 1px, transparent 1px),
-        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 1px, transparent 1px);
+        radial-gradient(circle at 20% 80%, rgba(255,195,0,0.05) 1px, transparent 1px), /* Ponto de Amarelo Suave */
+        radial-gradient(circle at 80% 20%, rgba(30,30,30,0.05) 1px, transparent 1px); /* Ponto de Grafite Suave */
       background-size: 50px 50px;
       pointer-events: none;
       z-index: -1;
@@ -64,7 +72,8 @@
       z-index:60;
       backdrop-filter:blur(6px);
       background:rgba(255,255,255,0.92);
-      border-bottom: 1px solid rgba(0,122,255,0.1);
+      /* Borda Amarela sutil */
+      border-bottom: 1px solid rgba(255,195,0,0.2); 
     }
     .nav{width:100%;max-width:var(--maxW);display:flex;justify-content:space-between;align-items:center;padding:0 1rem}
     .brand{display:flex;gap:12px;align-items:center}
@@ -72,7 +81,8 @@
       width:56px;
       height:56px;
       border-radius:12px;
-      background:linear-gradient(135deg,var(--azul-digital),var(--azul-marinho));
+      /* Gradiente Amarelo Forte/Escuro */
+      background:linear-gradient(135deg,var(--verde),var(--verde-escuro)); 
       display:flex;
       align-items:center;
       justify-content:center;
@@ -82,7 +92,7 @@
       transition: transform 0.3s ease;
     }
     .logo:hover{transform: scale(1.05);}
-    .brand h4{margin:0;font-size:1.05rem; color: var(--azul-marinho);}
+    .brand h4{margin:0;font-size:1.05rem; color: var(--verde-escuro);} /* Cor do texto da marca em Grafite */
     
     /* Menu Desktop */
     .desktop-nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
@@ -94,7 +104,8 @@
       border-radius: 6px;
       transition: all 0.3s ease;
     }
-    .desktop-nav a:hover{color: var(--azul-digital); background: rgba(0,122,255,0.08);}
+    /* Hover em Amarelo com fundo Cinza */
+    .desktop-nav a:hover{color: var(--verde-escuro); background: rgba(255,195,0,0.08);} 
     
     /* Menu Mobile - Hamburger */
     .mobile-menu-btn {
@@ -110,7 +121,7 @@
     }
     
     .mobile-menu-btn:hover {
-      background: rgba(0,122,255,0.08);
+      background: rgba(255,195,0,0.08);
     }
     
     .mobile-nav {
@@ -124,7 +135,7 @@
       z-index: 50;
       padding: 1rem;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      border-top: 1px solid rgba(0,122,255,0.1);
+      border-top: 1px solid rgba(255,195,0,0.1);
     }
     
     .mobile-nav.active {
@@ -157,8 +168,8 @@
     }
     
     .mobile-nav a:hover {
-      background: rgba(0,122,255,0.08);
-      color: var(--azul-digital);
+      background: rgba(255,195,0,0.08);
+      color: var(--verde-escuro);
     }
 
     .hero{
@@ -168,7 +179,8 @@
       position:relative;
       padding-top:72px;
       overflow:hidden;
-      background: linear-gradient(135deg, rgba(235,242,247,0.3) 0%, rgba(245,247,250,0.2) 100%);
+      /* Gradiente de fundo Cinza/Amarelo */
+      background: linear-gradient(135deg, rgba(240,240,240,0.5) 0%, rgba(255,195,0,0.1) 100%);
     }
     /* Bolhas decorativas no hero */
     .hero::before {
@@ -177,7 +189,7 @@
       width: 300px;
       height: 300px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,122,255,0.08) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,195,0,0.15) 0%, transparent 70%); /* Bolha Amarela */
       top: 10%;
       right: 10%;
       z-index: -1;
@@ -188,7 +200,7 @@
       width: 200px;
       height: 200px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,195,0,0.08) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(30,30,30,0.08) 0%, transparent 70%); /* Bolha Escura */
       bottom: 20%;
       left: 5%;
       z-index: -1;
@@ -206,15 +218,16 @@
     .hero-left{padding-right:1rem}
     .kicker{
       display:inline-block;
-      background:rgba(0,122,255,0.15);
-      color:var(--azul-marinho);
+      /* Kicker em Amarelo Suave */
+      background:rgba(255,195,0,0.15);
+      color:var(--verde-escuro);
       padding:8px 14px;
       border-radius:999px;
       font-weight:600;
       margin-bottom:1rem;
       font-size: 0.9rem;
       letter-spacing: 0.5px;
-      border: 1px solid rgba(0,122,255,0.2);
+      border: 1px solid rgba(255,195,0,0.2);
     }
     .hero-title{
       font-size:clamp(2rem,4.5vw,3.4rem);
@@ -223,7 +236,7 @@
       opacity: 0;
       transform: translateY(30px);
     }
-    .hero-title .highlight{color:var(--azul-digital)}
+    .hero-title .highlight{color:var(--verde)} /* Amarelo no destaque */
     .hero-lead{
       font-size:1.05rem;
       color:rgba(30,30,30,0.8);
@@ -252,23 +265,24 @@
       text-align: center;
     }
     .btn-primary{
-      background:var(--azul-digital);
-      color:#fff;
-      box-shadow:0 10px 30px rgba(0,122,255,0.2);
+      background:var(--verde); /* Amarelo como primário */
+      color:var(--verde-escuro); /* Texto escuro no botão amarelo */
+      box-shadow:0 10px 30px rgba(255,195,0,0.2);
     }
     .btn-primary:hover{
-      background:var(--azul-marinho);
+      background:var(--verde-escuro); /* Hover para Preto/Grafite */
+      color: #fff;
       transform: translateY(-2px);
-      box-shadow:0 15px 40px rgba(0,122,255,0.3);
+      box-shadow:0 15px 40px rgba(255,195,0,0.3);
     }
     .btn-ghost{
       background:transparent;
-      color:var(--azul-digital);
-      border:2px solid rgba(0,122,255,0.3);
+      color:var(--verde-escuro); /* Texto escuro no ghost */
+      border:2px solid rgba(30,30,30,0.3);
     }
     .btn-ghost:hover{
-      background:rgba(0,122,255,0.08);
-      border-color: var(--azul-digital);
+      background:rgba(255,195,0,0.08);
+      border-color: var(--verde); /* Borda Amarela no hover */
       transform: translateY(-2px);
     }
     .hero-visual{
@@ -288,7 +302,7 @@
     .side-img.left{left:-40px;top:6%}
     .side-img.right{right:-40px;bottom:6%}
     
-    /* Animações das imagens flutuantes */
+    /* Animações das imagens flutuantes (mantidas) */
     @keyframes floatLeft {
       0%, 100% { transform: translateY(0) rotate(-5deg); }
       50% { transform: translateY(-15px) rotate(-3deg); }
@@ -331,15 +345,15 @@
       padding:4.5rem 0;
       position: relative;
     }
-    /* Background diferenciado para cada seção */
+    /* Background diferenciado para cada seção (ajustado para Cinza/Amarelo) */
     #why {
-      background: linear-gradient(135deg, rgba(245,247,250,0.3) 0%, rgba(235,242,247,0.4) 100%);
+      background: linear-gradient(135deg, rgba(240,240,240,0.6) 0%, rgba(255,195,0,0.1) 100%);
     }
     #pricing {
-      background: linear-gradient(135deg, rgba(235,242,247,0.3) 0%, rgba(245,247,250,0.4) 100%);
+      background: linear-gradient(135deg, rgba(255,195,0,0.1) 0%, rgba(240,240,240,0.6) 100%);
     }
     #contact {
-      background: linear-gradient(135deg, rgba(245,247,250,0.4) 0%, rgba(235,242,247,0.3) 100%);
+      background: linear-gradient(135deg, rgba(240,240,240,0.8) 0%, rgba(255,255,255,0.9) 100%);
     }
     .section-head{
       max-width:880px;
@@ -377,7 +391,8 @@
       transform:translateY(30px);
       opacity:0;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid rgba(0,122,255,0.1);
+      /* Borda Amarela suave */
+      border: 1px solid rgba(255,195,0,0.1); 
       backdrop-filter: blur(5px);
     }
     .adv-card:hover{
@@ -394,7 +409,7 @@
     .adv-card div h4{
       margin: 0 0 0.8rem;
       font-size: 1.3rem;
-      color: var(--azul-marinho);
+      color: var(--verde-escuro);
     }
     .adv-card div p{
       margin: 0;
@@ -430,12 +445,12 @@
     }
     
     .pricing-carousel::-webkit-scrollbar-track {
-      background: rgba(0,122,255,0.1);
+      background: rgba(255,195,0,0.1);
       border-radius: 10px;
     }
     
     .pricing-carousel::-webkit-scrollbar-thumb {
-      background: var(--azul-digital);
+      background: var(--verde);
       border-radius: 10px;
     }
     
@@ -443,7 +458,8 @@
       background:rgba(255,255,255,0.85);
       border-radius:20px;
       padding:2.5rem 2rem;
-      border:1px solid rgba(0,122,255,0.1);
+      /* Borda Amarela suave */
+      border:1px solid rgba(255,195,0,0.1); 
       box-shadow:0 20px 50px rgba(10,20,10,0.06);
       transform:translateY(30px);
       opacity:0;
@@ -461,7 +477,7 @@
       background: rgba(255,255,255,0.95);
     }
     .plan.featured{
-      border:2px solid var(--azul-digital);
+      border:2px solid var(--verde); /* Destaque na borda amarela */
       transform: scale(1.02) translateY(30px);
     }
     .plan.featured:hover{transform: scale(1.02) translateY(-5px);}
@@ -471,8 +487,8 @@
       top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--azul-digital);
-      color: white;
+      background: var(--verde); /* Tag em amarelo */
+      color: var(--verde-escuro); /* Texto da tag em grafite */
       padding: 6px 16px;
       border-radius: 20px;
       font-size: 0.8rem;
@@ -481,11 +497,11 @@
     .plan h4{
       margin:0 0 0.6rem;
       font-size: 1.4rem;
-      color: var(--azul-marinho);
+      color: var(--verde-escuro);
     }
     .price{
       font-size:2rem;
-      color:var(--azul-digital);
+      color:var(--verde); /* Preço em amarelo */
       font-weight:800;
       margin-bottom: 1.5rem;
     }
@@ -504,7 +520,7 @@
       content: "✓";
       position: absolute;
       left: 0;
-      color: var(--azul-digital);
+      color: var(--verde); /* Ícone 'v' em amarelo */
       font-weight: bold;
     }
     .img-row{
@@ -535,11 +551,11 @@
     .plan-details {
       margin-top: 1.5rem;
       padding-top: 1.5rem;
-      border-top: 1px solid rgba(0,122,255,0.2);
+      border-top: 1px solid rgba(255,195,0,0.2);
     }
     .plan-target {
       font-weight: 600;
-      color: var(--azul-marinho);
+      color: var(--verde-escuro);
       margin-bottom: 0.5rem;
       font-size: 0.95rem;
     }
@@ -555,7 +571,7 @@
     .plan-features h5 {
       margin: 0 0 0.5rem;
       font-size: 1rem;
-      color: var(--azul-marinho);
+      color: var(--verde-escuro);
     }
     .plan-features ul {
       margin: 0;
@@ -569,18 +585,18 @@
     }
     .plan-features li::before {
       content: "•";
-      color: var(--azul-digital);
+      color: var(--verde); /* Ponto em amarelo */
       font-weight: bold;
       margin-right: 8px;
     }
     .plan-differential {
-      background: rgba(0,122,255,0.1);
+      background: rgba(255,195,0,0.1); /* Fundo em amarelo suave */
       padding: 1rem;
       border-radius: 8px;
       margin-top: 1rem;
     }
     .plan-differential strong {
-      color: var(--azul-marinho);
+      color: var(--verde-escuro);
       font-size: 0.9rem;
     }
     .plan-differential p {
@@ -617,7 +633,8 @@
       padding:3rem 0;
       text-align:center;
       color:#6b6b6b;
-      border-top: 1px solid rgba(0,122,255,0.1);
+      /* Borda Amarela suave */
+      border-top: 1px solid rgba(255,195,0,0.1); 
       margin-top: 2rem;
       background: rgba(255,255,255,0.7);
     }
@@ -639,9 +656,9 @@
       text-decoration: none;
       transition: color 0.3s ease;
     }
-    .footer-contact a:hover{color: var(--azul-digital);}
+    .footer-contact a:hover{color: var(--verde);} /* Hover em amarelo */
 
-    /* WhatsApp Floating Button */
+    /* WhatsApp Floating Button (mantido verde, padrão WhatsApp) */
     .whatsapp-float {
       position: fixed;
       width: 60px;
@@ -708,7 +725,8 @@
       to { opacity: 1; transform: translateY(0); }
     }
     .modal-header {
-      background: linear-gradient(135deg, var(--azul-digital), var(--azul-marinho));
+      /* Gradiente Amarelo Forte/Escuro */
+      background: linear-gradient(135deg, var(--verde), var(--verde-escuro)); 
       color: white;
       padding: 1.5rem 2rem;
     }
@@ -739,8 +757,8 @@
     }
     .form-group input:focus, .form-group textarea:focus {
       outline: none;
-      border-color: var(--azul-digital);
-      box-shadow: 0 0 0 3px rgba(0,122,255,0.1);
+      border-color: var(--verde); /* Foco em Amarelo */
+      box-shadow: 0 0 0 3px rgba(255,195,0,0.1);
     }
     .modal-footer {
       padding: 0 2rem 2rem;
@@ -757,7 +775,7 @@
     }
     .close:hover { color: #000; }
 
-    /* ========== CORREÇÕES PARA MOBILE ========== */
+    /* ========== CORREÇÕES PARA MOBILE ========== (Ajustando cores internas) */
     @media (max-width: 768px) {
       /* Correções gerais para mobile */
       body {
@@ -796,6 +814,15 @@
       
       .mobile-menu-btn {
         display: block;
+      }
+      
+      .mobile-menu-btn:hover {
+        background: rgba(255,195,0,0.08);
+      }
+      
+      .mobile-nav a:hover {
+        background: rgba(255,195,0,0.08);
+        color: var(--verde-escuro);
       }
       
       /* Hero mobile */
@@ -1082,605 +1109,476 @@
     </svg>
   </a>
 
-  <header>
-    <div class="nav">
-      <div class="brand">
-        <div class="logo">
-          <img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 23_53_03.png" alt="Logo HarpiaTI" style="width: 100%; height: 100%; object-fit: contain;">
-        </div>
-        <h4>HarpiaTI</h4>
-      </div>
-      
-      <!-- Menu Desktop -->
-      <nav class="desktop-nav">
-        <ul>
-          <li><a href="#why">Por que escolher</a></li>
-          <li><a href="#pricing">Planos</a></li>
-          <li><a href="#contact">Contato</a></li>
-        </ul>
-      </nav>
-      
-      <!-- Botão Menu Mobile -->
-      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-    </div>
-    
-    <!-- Menu Mobile -->
-    <nav class="mobile-nav" id="mobileNav">
-      <ul>
-        <li><a href="#why">Por que escolher</a></li>
-        <li><a href="#pricing">Planos</a></li>
-        <li><a href="#contact">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-left">
-          <div class="kicker">Uberlândia & Região</div>
-          <h1 class="hero-title">HarpiaTI - <span class="highlight">O seu Guardião Digital</span></h1>
-          <p class="hero-lead">
-            Soluções de TI, segurança digital, backup em nuvem, manutenção preventiva e consultoria para pequenas empresas. 
-            Planos acessíveis, sem burocracia, suporte remoto e presencial em Uberlândia e região.
-          </p>
-          <div class="hero-cta">
-            <a href="#pricing" class="btn btn-primary">Ver Planos</a>
-            <a href="#" class="btn btn-ghost" id="avaliacaoBtn">Avaliação Gratuita</a>
-          </div>
-        </div>
-        <div class="hero-visual">
-          <img src="harpiaimagens/Gemini_Generated_Image_9qmot39qmot39qmo.png" alt="Suporte técnico remoto" class="side-img left">
-          <div class="card-visual">
-            <img src="harpiaimagens/Gemini_Generated_Image_rle9dirle9dirle9.png" alt="Serviços de TI empresarial">
-          </div>
-          <img src="harpiaimagens/Gemini_Generated_Image_c8uqxnc8uqxnc8uq.png" alt="Segurança digital" class="side-img right">
-        </div>
-      </div>
-    </section>
-
-    <section id="why">
-      <div class="container">
-        <div class="section-head">
-          <h2>Por que escolher a HarpiaTI?</h2>
-          <p>Oferecemos soluções completas em tecnologia da informação para sua empresa crescer com segurança e estabilidade.</p>
-        </div>
-        <div class="advantages-grid">
-          <div class="adv-card">
-            <img src="harpiaimagens/Gemini_Generated_Image_8mraqs8mraqs8mra.png" alt="Suporte técnico especializado">
-            <div>
-              <h4>Suporte Técnico Especializado</h4>
-              <p>Equipe qualificada para resolver problemas de hardware, software, redes e segurança digital com agilidade e eficiência.</p>
-            </div>
-          </div>
-          <div class="adv-card">
-            <img src="harpiaimagens/Gemini_Generated_Image_4ikwbs4ikwbs4ikw.png" alt="Segurança e proteção">
-            <div>
-              <h4>Segurança e Proteção Digital</h4>
-              <p>Implementamos firewalls, antivírus corporativos, políticas de segurança e monitoramento contínuo contra ameaças cibernéticas.</p>
-            </div>
-          </div>
-          <div class="adv-card">
-            <img src="harpiaimagens/Gemini_Generated_Image_8fuhgt8fuhgt8fuh.png" alt="Backup em nuvem">
-            <div>
-              <h4>Backup Automatizado em Nuvem</h4>
-              <p>Seus dados protegidos com backup automático, criptografado e recuperação rápida em caso de incidentes.</p>
-            </div>
-          </div>
-          <div class="adv-card">
-            <img src="harpiaimagens/Gemini_Generated_Image_n624knn624knn624.png" alt="Consultoria em TI">
-            <div>
-              <h4>Consultoria Estratégica em TI</h4>
-              <p>Orientamos sua empresa na escolha das melhores tecnologias, otimização de processos e planejamento de infraestrutura.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="pricing">
-      <div class="container">
-        <div class="section-head">
-          <h2>Planos de Serviços</h2>
-          <p>Escolha o plano ideal para o tamanho e necessidades da sua empresa. Todos incluem suporte técnico remoto.</p>
-        </div>
-        
-        <!-- Grid de Planos - Desktop -->
-        <div class="pricing-grid">
-          <div class="plan">
-            <h4>Voo Inicial</h4>
-            <div class="price">R$ 299<span>/mês</span></div>
-            <ul>
-              <li>Suporte remoto (8h às 18h)</li>
-              <li>Monitoramento básico</li>
-              <li>Backup em nuvem (100GB)</li>
-              <li>Antivírus corporativo</li>
-              <li>Até 5 usuários</li>
-            </ul>
-            <div class="img-row">
-              <img src="harpiaimagens/Gemini_Generated_Image_8mraqs8mraqs8mra.png" alt="Suporte remoto">
-              <img src="harpiaimagens/Gemini_Generated_Image_4ikwbs4ikwbs4ikw.png" alt="Monitoramento">
-            </div>
-            
-            <!-- Informações detalhadas do plano -->
-            <div class="plan-details">
-              <div class="plan-target">Indicado para: Microempresas e profissionais autônomos</div>
-              <div class="plan-desc">Ideal para quem está começando e precisa de um suporte básico e acessível para manter a operação funcionando.</div>
-              
-              <div class="plan-features">
-                <h5>Recursos incluídos:</h5>
-                <ul>
-                  <li>Suporte remoto em horário comercial</li>
-                  <li>Monitoramento de servidores e estações</li>
-                  <li>Backup automatizado de dados essenciais</li>
-                  <li>Proteção antivírus para todos os dispositivos</li>
-                  <li>Atendimento prioritário por e-mail e chat</li>
-                </ul>
-              </div>
-              
-              <div class="plan-differential">
-                <strong>Diferencial:</strong>
-                <p>Implementação gratuita e migração assistida de dados</p>
-              </div>
-            </div>
-            
-            <a href="https://wa.me/5534999935533?text=Olá! Gostaria de saber mais sobre o plano Voo Inicial." class="btn btn-primary" target="_blank">Contratar</a>
-          </div>
-          
-          <div class="plan featured">
-            <h4>Ascensão</h4>
-            <div class="price">R$ 599<span>/mês</span></div>
-            <ul>
-              <li>Suporte remoto (24/7)</li>
-              <li>Monitoramento proativo</li>
-              <li>Backup ilimitado</li>
-              <li>Segurança avançada</li>
-              <li>Até 15 usuários</li>
-              <li>Visita técnica mensal</li>
-            </ul>
-            <div class="img-row">
-              <img src="harpiaimagens/Gemini_Generated_Image_8fuhgt8fuhgt8fuh.png" alt="Backup em nuvem">
-              <img src="harpiaimagens/Gemini_Generated_Image_n624knn624knn624.png" alt="Consultoria">
-            </div>
-            
-            <!-- Informações detalhadas do plano -->
-            <div class="plan-details">
-              <div class="plan-target">Indicado para: Pequenas empresas em crescimento</div>
-              <div class="plan-desc">Perfeito para empresas que já possuem uma estrutura consolidada e precisam de mais segurança e disponibilidade.</div>
-              
-              <div class="plan-features">
-                <h5>Recursos incluídos:</h5>
-                <ul>
-                  <li>Suporte remoto 24 horas, 7 dias por semana</li>
-                  <li>Monitoramento proativo de toda a infraestrutura</li>
-                  <li>Backup em nuvem com espaço ilimitado</li>
-                  <li>Firewall e proteção contra invasões</li>
-                  <li>Visita técnica presencial mensal</li>
-                  <li>Relatórios mensais de desempenho</li>
-                </ul>
-              </div>
-              
-              <div class="plan-differential">
-                <strong>Diferencial:</strong>
-                <p>Consultoria estratégica trimestral incluída</p>
-              </div>
-            </div>
-            
-            <a href="https://wa.me/5534999935533?text=Olá! Gostaria de saber mais sobre o plano Ascensão." class="btn btn-primary" target="_blank">Contratar</a>
-          </div>
-          
-          <div class="plan">
-            <h4>Harpia</h4>
-            <div class="price">R$ 999<span>/mês</span></div>
-            <ul>
-              <li>Suporte completo 24/7</li>
-              <li>Monitoramento avançado</li>
-              <li>Backup com replicação</li>
-              <li>Cibersegurança total</li>
-              <li>Usuários ilimitados</li>
-              <li>Visitas técnicas semanais</li>
-              <li>Consultoria dedicada</li>
-            </ul>
-            <div class="img-row">
-              <img src="harpiaimagens/Gemini_Generated_Image_kwxjnzkwxjnzkwxj.png" alt="Segurança avançada">
-              <img src="harpiaimagens/Gemini_Generated_Image_9qmot39qmot39qmo.png" alt="Suporte completo">
-            </div>
-            
-            <!-- Informações detalhadas do plano -->
-            <div class="plan-details">
-              <div class="plan-target">Indicado para: Empresas de médio porte</div>
-              <div class="plan-desc">Solução completa para empresas que dependem criticamente da tecnologia e não podem correr riscos.</div>
-              
-              <div class="plan-features">
-                <h5>Recursos incluídos:</h5>
-                <ul>
-                  <li>Suporte completo 24/7 por múltiplos canais</li>
-                  <li>Monitoramento avançado com IA</li>
-                  <li>Backup com replicação em múltiplas localidades</li>
-                  <li>Proteção contra ransomwares e ataques avançados</li>
-                  <li>Visitas técnicas semanais</li>
-                  <li>Consultoria estratégica mensal</li>
-                  <li>Gestão completa de ativos de TI</li>
-                </ul>
-              </div>
-              
-              <div class="plan-differential">
-                <strong>Diferencial:</strong>
-                <p>Plano de recuperação de desastres personalizado</p>
-              </div>
-            </div>
-            
-            <a href="https://wa.me/5534999935533?text=Olá! Gostaria de saber mais sobre o plano Harpia." class="btn btn-primary" target="_blank">Contratar</a>
-          </div>
-        </div>
-        
-        <!-- Carrossel de Planos - Mobile -->
-        <div class="pricing-carousel">
-          <div class="plan">
-            <h4>Voo Inicial</h4>
-            <div class="price">R$ 299<span>/mês</span></div>
-            <ul>
-              <li>Suporte remoto (8h às 18h)</li>
-              <li>Monitoramento básico</li>
-              <li>Backup em nuvem (100GB)</li>
-              <li>Antivírus corporativo</li>
-              <li>Até 5 usuários</li>
-            </ul>
-            <div class="img-row">
-              <img src="harpiaimagens/Gemini_Generated_Image_8mraqs8mraqs8mra.png" alt="Suporte remoto">
-              <img src="harpiaimagens/Gemini_Generated_Image_4ikwbs4ikwbs4ikw.png" alt="Monitoramento">
-            </div>
-            
-            <!-- Informações detalhadas do plano -->
-            <div class="plan-details">
-              <div class="plan-target">Indicado para: Microempresas e profissionais autônomos</div>
-              <div class="plan-desc">Ideal para quem está começando e precisa de um suporte básico e acessível para manter a operação funcionando.</div>
-              
-              <div class="plan-features">
-                <h5>Recursos incluídos:</h5>
-                <ul>
-                  <li>Suporte remoto em horário comercial</li>
-                  <li>Monitoramento de servidores e estações</li>
-                  <li>Backup automatizado de dados essenciais</li>
-                  <li>Proteção antivírus para todos os dispositivos</li>
-                  <li>Atendimento prioritário por e-mail e chat</li>
-                </ul>
-              </div>
-              
-              <div class="plan-differential">
-                <strong>Diferencial:</strong>
-                <p>Implementação gratuita e migração assistida de dados</p>
-              </div>
-            </div>
-            
-            <a href="https://wa.me/5534999935533?text=Olá! Gostaria de saber mais sobre o plano Voo Inicial." class="btn btn-primary" target="_blank">Contratar</a>
-          </div>
-          
-          <div class="plan featured">
-            <h4>Ascensão</h4>
-            <div class="price">R$ 599<span>/mês</span></div>
-            <ul>
-              <li>Suporte remoto (24/7)</li>
-              <li>Monitoramento proativo</li>
-              <li>Backup ilimitado</li>
-              <li>Segurança avançada</li>
-              <li>Até 15 usuários</li>
-              <li>Visita técnica mensal</li>
-            </ul>
-            <div class="img-row">
-              <img src="harpiaimagens/Gemini_Generated_Image_8fuhgt8fuhgt8fuh.png" alt="Backup em nuvem">
-              <img src="harpiaimagens/Gemini_Generated_Image_n624knn624knn624.png" alt="Consultoria">
-            </div>
-            
-            <!-- Informações detalhadas do plano -->
-            <div class="plan-details">
-              <div class="plan-target">Indicado para: Pequenas empresas em crescimento</div>
-              <div class="plan-desc">Perfeito para empresas que já possuem uma estrutura consolidada e precisam de mais segurança e disponibilidade.</div>
-              
-              <div class="plan-features">
-                <h5>Recursos incluídos:</h5>
-                <ul>
-                  <li>Suporte remoto 24 horas, 7 dias por semana</li>
-                  <li>Monitoramento proativo de toda a infraestrutura</li>
-                  <li>Backup em nuvem com espaço ilimitado</li>
-                  <li>Firewall e proteção contra invasões</li>
-                  <li>Visita técnica presencial mensal</li>
-                  <li>Relatórios mensais de desempenho</li>
-                </ul>
-              </div>
-              
-              <div class="plan-differential">
-                <strong>Diferencial:</strong>
-                <p>Consultoria estratégica trimestral incluída</p>
-              </div>
-            </div>
-            
-            <a href="https://wa.me/5534999935533?text=Olá! Gostaria de saber mais sobre o plano Ascensão." class="btn btn-primary" target="_blank">Contratar</a>
-          </div>
-          
-          <div class="plan">
-            <h4>Harpia</h4>
-            <div class="price">R$ 999<span>/mês</span></div>
-            <ul>
-              <li>Suporte completo 24/7</li>
-              <li>Monitoramento avançado</li>
-              <li>Backup com replicação</li>
-              <li>Cibersegurança total</li>
-              <li>Usuários ilimitados</li>
-              <li>Visitas técnicas semanais</li>
-              <li>Consultoria dedicada</li>
-            </ul>
-            <div class="img-row">
-              <img src="harpiaimagens/Gemini_Generated_Image_kwxjnzkwxjnzkwxj.png" alt="Segurança avançada">
-              <img src="harpiaimagens/Gemini_Generated_Image_9qmot39qmot39qmo.png" alt="Suporte completo">
-            </div>
-            
-            <!-- Informações detalhadas do plano -->
-            <div class="plan-details">
-              <div class="plan-target">Indicado para: Empresas de médio porte</div>
-              <div class="plan-desc">Solução completa para empresas que dependem criticamente da tecnologia e não podem correr riscos.</div>
-              
-              <div class="plan-features">
-                <h5>Recursos incluídos:</h5>
-                <ul>
-                  <li>Suporte completo 24/7 por múltiplos canais</li>
-                  <li>Monitoramento avançado com IA</li>
-                  <li>Backup com replicação em múltiplas localidades</li>
-                  <li>Proteção contra ransomwares e ataques avançados</li>
-                  <li>Visitas técnicas semanais</li>
-                  <li>Consultoria estratégica mensal</li>
-                  <li>Gestão completa de ativos de TI</li>
-                </ul>
-              </div>
-              
-              <div class="plan-differential">
-                <strong>Diferencial:</strong>
-                <p>Plano de recuperação de desastres personalizado</p>
-              </div>
-            </div>
-            
-            <a href="https://wa.me/5534999935533?text=Olá! Gostaria de saber mais sobre o plano Harpia." class="btn btn-primary" target="_blank">Contratar</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="final-cta">
-          <h2>Pronto para transformar sua infraestrutura de TI?</h2>
-          <p>Entre em contato conosco para uma avaliação gratuita da sua infraestrutura atual e descubra como a HarpiaTI pode ajudar sua empresa a voar mais alto.</p>
-          <div class="hero-cta">
-            <a href="https://wa.me/5534999935533?text=Olá! Gostaria de agendar uma avaliação gratuita com a HarpiaTI." class="btn btn-primary" target="_blank">Falar no WhatsApp</a>
-            <a href="tel:+5534999935533" class="btn btn-ghost">Ligar Agora</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>HarpiaTI - O seu Guardião Digital</p>
-      <div class="footer-contact">
-        <a href="tel:+5534999935533">(34) 99993-5533</a>
-        <a href="mailto:contato@harpiati.com.br">contato@harpiati.com.br</a>
-        <a href="https://wa.me/5534999935533" target="_blank">WhatsApp</a>
-      </div>
-      <p>Uberlândia - MG &copy; 2025</p>
-    </div>
-  </footer>
-
   <!-- Modal de Avaliação -->
-  <div id="avaliacaoModal" class="modal">
+  <div id="evaluationModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
         <span class="close">&times;</span>
-        <h3>Avaliação Gratuita</h3>
+        <h3>Solicitar Avaliação Gratuita</h3>
       </div>
       <div class="modal-body">
-        <p>Preencha o formulário abaixo para agendar uma avaliação gratuita da sua infraestrutura de TI.</p>
-        <form id="avaliacaoForm">
+        <form id="evaluationForm">
           <div class="form-group">
-            <label for="nome">Nome completo</label>
-            <input type="text" id="nome" name="nome" required>
+            <label for="name">Nome completo</label>
+            <input type="text" id="name" name="name" required>
           </div>
           <div class="form-group">
-            <label for="empresa">Nome da empresa</label>
-            <input type="text" id="empresa" name="empresa" required>
+            <label for="company">Empresa</label>
+            <input type="text" id="company" name="company">
           </div>
           <div class="form-group">
-            <label for="telefone">Telefone</label>
-            <input type="tel" id="telefone" name="telefone" required>
+            <label for="phone">Telefone</label>
+            <input type="tel" id="phone" name="phone" required>
           </div>
           <div class="form-group">
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" required>
           </div>
           <div class="form-group">
-            <label for="mensagem">Descreva brevemente suas necessidades</label>
-            <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" rows="4" placeholder="Conte-nos sobre suas necessidades de TI..."></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-ghost" id="cancelarBtn">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="enviarAvaliacaoBtn">Enviar Solicitação</button>
+        <button type="button" class="btn btn-ghost" id="closeModal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="submitForm">Enviar Solicitação</button>
       </div>
     </div>
   </div>
 
+  <header>
+    <div class="nav container">
+      <div class="brand">
+        <div class="logo"><img src="abacatimagens/ChatGPT Image 22 de set. de 2025, 23_53_03.png" alt="Logo HarpiaTI" style="width:100%;height:100%;object-fit:contain"></div>
+        <h4>HarpiaTI</h4>
+      </div>
+      
+      <!-- Menu Desktop -->
+      <nav class="desktop-nav">
+        <ul>
+          <li><a href="#home">Início</a></li>
+          <li><a href="#why">Por que</a></li>
+          <li><a href="#pricing">Planos</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Menu Mobile Hamburger -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    </div>
+    
+    <!-- Menu Mobile -->
+    <nav class="mobile-nav" id="mobileNav">
+      <ul>
+        <li><a href="#home">Início</a></li>
+        <li><a href="#why">Por que</a></li>
+        <li><a href="#pricing">Planos</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="hero" id="home">
+    <div class="hero-inner container">
+      <div class="hero-left">
+        <div class="kicker">Proteção local • Uberlândia</div>
+        <h1 class="hero-title" id="heroTitle">
+          HarpiaTI - <span class="highlight">O seu Guardião Digital</span>
+        </h1>
+        <p class="hero-lead">Suporte remoto, segurança e nuvem — planos pensados para micro e pequenas empresas que precisam de TI confiável sem burocracia.</p>
+        <div class="hero-cta">
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar os serviços da HarpiaTI." class="btn btn-primary" target="_blank">Quero proteção</a>
+          <button class="btn btn-ghost" id="openForm">Solicitar avaliação</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img class="side-img left" src="harpiaimagens/Gemini_Generated_Image_9qmot39qmot39qmo.png" alt="Harpia no PC" loading="lazy">
+        <div class="card-visual"><img src="harpiaimagens/Gemini_Generated_Image_rle9dirle9dirle9.png" alt="Harpia com escudo" loading="lazy"></div>
+        <img class="side-img right" src="harpiaimagens/Gemini_Generated_Image_c8uqxnc8uqxnc8uq.png" alt="Harpia segurança" loading="lazy">
+      </div>
+    </div>
+  </main>
+
+  <section id="why">
+    <div class="container">
+      <div class="section-head"><h2>Por que escolher a HarpiaTI?</h2><p>Combinação de suporte rápido, prevenção e estratégia — para que você foque no que importa.</p></div>
+      <div class="advantages-grid">
+        <div class="adv-card">
+          <img src="harpiaimagens/Gemini_Generated_Image_8mraqs8mraqs8mra.png" alt="Suporte ágil" width="70" loading="lazy">
+          <div>
+            <h4>Suporte ágil</h4>
+            <p>Tempo médio de resposta baixo para manter sua operação funcionando. Atendimento remoto rápido e acompanhamento contínuo.</p>
+          </div>
+        </div>
+        <div class="adv-card">
+          <img src="harpiaimagens/Gemini_Generated_Image_4ikwbs4ikwbs4ikw.png" alt="Segurança" width="70" loading="lazy">
+          <div>
+            <h4>Segurança por design</h4>
+            <p>Proteção pensada desde o início, com firewalls, antivírus e boas práticas aplicadas. Configuração de firewalls, antivírus e testes periódicos.</p>
+          </div>
+        </div>
+        <div class="adv-card">
+          <img src="harpiaimagens/Gemini_Generated_Image_9qmot39qmot39qmo.png" alt="Nuvem" width="70" loading="lazy">
+          <div>
+            <h4>Nuvem sem dor</h4>
+            <p>Implantação simples e suporte em Google Workspace / Microsoft 365, com backup automatizado. Reduzindo risco de perda de dados.</p>
+          </div>
+        </div>
+        <div class="adv-card">
+          <img src="harpiaimagens/Gemini_Generated_Image_rle9dirle9dirle9.png" alt="Proteção contínua" width="70" loading="lazy">
+          <div>
+            <h4>Proteção contínua</h4>
+            <p>Monitoramento ativo e respostas rápidas em caso de incidentes. Monitoramento constante para detectar problemas antes que afetem o negócio.</p>
+          </div>
+        </div>
+        <div class="adv-card">
+          <img src="harpiaimagens/Gemini_Generated_Image_8fuhgt8fuhgt8fuh.png" alt="Atendimento humano" width="70" loading="lazy">
+          <div>
+            <h4>Atendimento humano e local</h4>
+            <p>Estamos em Uberlândia e falamos a língua do seu negócio. Suporte personalizado com profissionais que entendem suas necessidades.</p>
+          </div>
+        </div>
+        <div class="adv-card">
+          <img src="harpiaimagens/Gemini_Generated_Image_n624knn624knn624.png" alt="Transparência" width="70" loading="lazy">
+          <div>
+            <h4>Transparência total</h4>
+            <p>Planos claros, preços fixos e sem letras miúdas. Você sabe exatamente o que está contratando e quanto vai pagar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="container">
+      <div class="section-head"><h2>Nossos Planos</h2><p>Escolha o nível de proteção que faz sentido para o seu negócio — transparência e suporte real.</p></div>
+      
+      <!-- Grid de Planos para Desktop -->
+      <div class="pricing-grid">
+        <div class="plan">
+          <h4>Voo Inicial</h4>
+          <div class="price">R$150/mês</div>
+          <ul>
+            <li>Suporte remoto essencial</li>
+            <li>Backup em nuvem básico</li>
+            <li>Monitoramento inicial</li>
+            <li>Relatórios mensais</li>
+          </ul>
+          
+          <div class="plan-details">
+            <div class="plan-target">Para quem é: Microempresas e profissionais autônomos que precisam de proteção digital básica sem gastar muito.</div>
+            <div class="plan-desc">Ideal para quem está começando e precisa de tranquilidade digital sem burocracia.</div>
+            
+            <div class="plan-features">
+              <h5>O que inclui:</h5>
+              <ul>
+                <li>Suporte remoto essencial: resolução rápida de problemas comuns (e-mail, impressoras, sistemas travando)</li>
+                <li>Backup em nuvem básico: armazenamento automático de arquivos importantes para evitar perda de dados</li>
+                <li>Monitoramento inicial: verificação periódica de desempenho e segurança dos equipamentos</li>
+                <li>Relatórios mensais: visão clara da saúde dos sistemas e recomendações simples de melhoria</li>
+              </ul>
+            </div>
+            
+            <div class="plan-differential">
+              <strong>Diferencial:</strong>
+              <p>Ideal para quem está começando e precisa de tranquilidade digital sem burocracia.</p>
+            </div>
+          </div>
+          
+          <div class="img-row">
+            <img src="harpiaimagens/Gemini_Generated_Image_c8uqxnc8uqxnc8uq.png" alt="harpia" loading="lazy">
+          </div>
+          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Voo Inicial da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+        </div>
+        
+        <div class="plan featured">
+          <h4>Ascensão</h4>
+          <div class="price">R$299/mês</div>
+          <ul>
+            <li>Tudo do Voo Inicial</li>
+            <li>Manutenção preventiva</li>
+            <li>Firewall e antivírus</li>
+            <li>Backup ampliado</li>
+            <li>Suporte prioritário</li>
+          </ul>
+          
+          <div class="plan-details">
+            <div class="plan-target">Para quem é: Pequenas empresas em expansão que precisam de mais segurança e continuidade.</div>
+            <div class="plan-desc">O equilíbrio perfeito entre custo e segurança, garantindo que a empresa cresça com estabilidade.</div>
+            
+            <div class="plan-features">
+              <h5>O que inclui:</h5>
+              <ul>
+                <li>Tudo do Voo Inicial</li>
+                <li>Manutenção preventiva: atualizações regulares e otimização dos sistemas para evitar falhas</li>
+                <li>Firewall e antivírus profissionais: proteção ativa contra vírus, invasões e ataques</li>
+                <li>Backup ampliado: maior capacidade e frequência de cópias de segurança</li>
+                <li>Suporte prioritário: atendimento mais rápido em caso de chamados</li>
+              </ul>
+            </div>
+            
+            <div class="plan-differential">
+              <strong>Diferencial:</strong>
+              <p>O equilíbrio perfeito entre custo e segurança, garantindo que a empresa cresça com estabilidade.</p>
+            </div>
+          </div>
+          
+          <div class="img-row">
+            <img src="harpiaimagens/Gemini_Generated_Image_8fuhgt8fuhgt8fuh.png" alt="harpia" loading="lazy">
+            <img src="harpiaimagens/Gemini_Generated_Image_kwxjnzkwxjnzkwxj.png" alt="harpia" loading="lazy">
+          </div>
+          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Ascensão da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+        </div>
+        
+        <div class="plan">
+          <h4>Harpia</h4>
+          <div class="price">R$599/mês</div>
+          <ul>
+            <li>Tudo do Ascensão</li>
+            <li>Suporte remoto + presencial</li>
+            <li>Monitoramento 24/7</li>
+            <li>Testes de vulnerabilidade</li>
+            <li>Consultoria estratégica</li>
+          </ul>
+          
+          <div class="plan-details">
+            <div class="plan-target">Para quem é: Empresas que não podem parar e precisam de TI estratégico, com alta proteção.</div>
+            <div class="plan-desc">Solução completa para empresas que dependem da tecnologia e precisam de alta disponibilidade.</div>
+            
+            <div class="plan-features">
+              <h5>O que inclui:</h5>
+              <ul>
+                <li>Tudo do Ascensão</li>
+                <li>Suporte remoto + presencial: atendimento direto em Uberlândia quando necessário</li>
+                <li>Monitoramento 24/7: acompanhamento contínuo para detectar problemas antes que afetem o negócio</li>
+                <li>Testes de vulnerabilidade: análise de segurança periódica para identificar e corrigir riscos</li>
+                <li>Consultoria estratégica: orientações de TI alinhadas ao crescimento e metas da empresa</li>
+              </ul>
+            </div>
+            
+            <div class="plan-differential">
+              <strong>Diferencial:</strong>
+              <p>Solução completa para empresas que dependem da tecnologia e precisam de alta disponibilidade.</p>
+            </div>
+          </div>
+          
+          <div class="img-row">
+            <img src="harpiaimagens/Gemini_Generated_Image_8mraqs8mraqs8mra.png" alt="harpia" loading="lazy">
+            <img src="harpiaimagens/Gemini_Generated_Image_4ikwbs4ikwbs4ikw.png" alt="harpia" loading="lazy">
+            <img src="harpiaimagens/Gemini_Generated_Image_n624knn624knn624.png" alt="harpia" loading="lazy">
+          </div>
+          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Harpia da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+        </div>
+      </div>
+      
+      <!-- Carrossel de Planos para Mobile -->
+      <div class="pricing-carousel">
+        <div class="plan">
+          <h4>Voo Inicial</h4>
+          <div class="price">R$150/mês</div>
+          <ul>
+            <li>Suporte remoto essencial</li>
+            <li>Backup em nuvem básico</li>
+            <li>Monitoramento inicial</li>
+            <li>Relatórios mensais</li>
+          </ul>
+          
+          <div class="plan-details">
+            <div class="plan-target">Para microempresas e autônomos</div>
+            <div class="plan-desc">Proteção digital básica sem gastar muito.</div>
+          </div>
+          
+          <div class="img-row">
+            <img src="harpiaimagens/Gemini_Generated_Image_c8uqxnc8uqxnc8uq.png" alt="harpia" loading="lazy">
+          </div>
+          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Voo Inicial da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+        </div>
+        
+        <div class="plan featured">
+          <h4>Ascensão</h4>
+          <div class="price">R$299/mês</div>
+          <ul>
+            <li>Tudo do Voo Inicial</li>
+            <li>Manutenção preventiva</li>
+            <li>Firewall e antivírus</li>
+            <li>Backup ampliado</li>
+            <li>Suporte prioritário</li>
+          </ul>
+          
+          <div class="plan-details">
+            <div class="plan-target">Para pequenas empresas em expansão</div>
+            <div class="plan-desc">Mais segurança e continuidade.</div>
+          </div>
+          
+          <div class="img-row">
+            <img src="harpiaimagens/Gemini_Generated_Image_8fuhgt8fuhgt8fuh.png" alt="harpia" loading="lazy">
+            <img src="harpiaimagens/Gemini_Generated_Image_kwxjnzkwxjnzkwxj.png" alt="harpia" loading="lazy">
+          </div>
+          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Ascensão da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+        </div>
+        
+        <div class="plan">
+          <h4>Harpia</h4>
+          <div class="price">R$599/mês</div>
+          <ul>
+            <li>Tudo do Ascensão</li>
+            <li>Suporte remoto + presencial</li>
+            <li>Monitoramento 24/7</li>
+            <li>Testes de vulnerabilidade</li>
+            <li>Consultoria estratégica</li>
+          </ul>
+          
+          <div class="plan-details">
+            <div class="plan-target">Para empresas que não podem parar</div>
+            <div class="plan-desc">TI estratégico com alta proteção.</div>
+          </div>
+          
+          <div class="img-row">
+            <img src="harpiaimagens/Gemini_Generated_Image_8mraqs8mraqs8mra.png" alt="harpia" loading="lazy">
+            <img src="harpiaimagens/Gemini_Generated_Image_4ikwbs4ikwbs4ikw.png" alt="harpia" loading="lazy">
+            <img src="harpiaimagens/Gemini_Generated_Image_n624knn624knn624.png" alt="harpia" loading="lazy">
+          </div>
+          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Harpia da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="final-cta">
+        <h2>Pronto para proteger seu negócio?</h2>
+        <p>Fale conosco e descubra como a HarpiaTI pode ajudar sua empresa a crescer com segurança.</p>
+        <div class="hero-cta">
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de conversar sobre os serviços da HarpiaTI." class="btn btn-primary" target="_blank">Falar no WhatsApp</a>
+          <button class="btn btn-ghost" id="openForm2">Solicitar avaliação</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>HarpiaTI - Suporte de TI em Uberlândia</p>
+      <div class="footer-contact">
+        <a href="https://maps.google.com/?q=Uberlândia+MG" target="_blank">Uberlândia, MG</a>
+      </div>
+      <p>&copy; 2025 HarpiaTI. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
   <script>
-    // GSAP Animations
-    gsap.registerPlugin(ScrollTrigger);
-    
-    // Hero animations
-    gsap.to('.hero-title', { 
-      opacity: 1, 
-      y: 0, 
-      duration: 0.8, 
-      delay: 0.2 
-    });
-    
-    gsap.to('.hero-lead', { 
-      opacity: 1, 
-      y: 0, 
-      duration: 0.8, 
-      delay: 0.4 
-    });
-    
-    gsap.to('.hero-cta', { 
-      opacity: 1, 
-      y: 0, 
-      duration: 0.8, 
-      delay: 0.6 
-    });
-    
-    // Section animations
-    gsap.utils.toArray('.section-head').forEach(section => {
-      gsap.fromTo(section, 
-        { opacity: 0, y: 30 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.8, 
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-    });
-    
-    // Advantage cards animations
-    gsap.utils.toArray('.adv-card').forEach((card, i) => {
-      gsap.fromTo(card, 
-        { opacity: 0, y: 30 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.6, 
-          delay: i * 0.1,
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-    });
-    
-    // Plan cards animations
-    gsap.utils.toArray('.plan').forEach((plan, i) => {
-      gsap.fromTo(plan, 
-        { opacity: 0, y: 30 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.6, 
-          delay: i * 0.1,
-          scrollTrigger: {
-            trigger: plan,
-            start: "top 85%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-    });
-    
-    // Final CTA animation
-    gsap.fromTo('.final-cta', 
-      { opacity: 0, y: 30 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.8, 
-        scrollTrigger: {
-          trigger: '.final-cta',
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse"
-        }
-      }
-    );
-    
-    // Mobile menu functionality
+    // Animações com GSAP
     document.addEventListener('DOMContentLoaded', function() {
-      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      const mobileNav = document.getElementById('mobileNav');
-      const mobileLinks = mobileNav.querySelectorAll('a');
+      // Verificar se estamos em um dispositivo móvel
+      const isMobile = window.innerWidth <= 768;
       
-      // Toggle mobile menu
-      mobileMenuBtn.addEventListener('click', function() {
-        mobileNav.classList.toggle('active');
-        // Change button icon
-        mobileMenuBtn.textContent = mobileNav.classList.contains('active') ? '✕' : '☰';
-      });
+      // Animação do hero
+      gsap.to('#heroTitle', {duration: 0.8, opacity: 1, y: 0, delay: 0.2});
+      gsap.to('.hero-lead', {duration: 0.8, opacity: 1, y: 0, delay: 0.4});
+      gsap.to('.hero-cta', {duration: 0.8, opacity: 1, y: 0, delay: 0.6});
       
-      // Close mobile menu when a link is clicked
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          mobileNav.classList.remove('active');
-          mobileMenuBtn.textContent = '☰';
+      // Configurar ScrollTrigger apenas se não for mobile ou se for uma tela maior
+      if (!isMobile || window.innerWidth > 768) {
+        // Animações de scroll para as seções
+        gsap.utils.toArray('.section-head').forEach(section => {
+          gsap.to(section, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 80%',
+              toggleActions: 'play none none reverse'
+            }
+          });
         });
-      });
+        
+        gsap.utils.toArray('.adv-card').forEach((card, i) => {
+          gsap.to(card, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: i * 0.1,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+        });
+        
+        gsap.utils.toArray('.plan').forEach((plan, i) => {
+          gsap.to(plan, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: i * 0.1,
+            scrollTrigger: {
+              trigger: plan,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+        });
+        
+        gsap.to('.final-cta', {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: '.final-cta',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+      } else {
+        // Para mobile: animações simples sem scroll trigger
+        gsap.utils.toArray('.section-head, .adv-card, .plan, .final-cta').forEach((el, i) => {
+          gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: i * 0.1
+          });
+        });
+      }
       
-      // Modal functionality
-      const modal = document.getElementById('avaliacaoModal');
-      const avaliacaoBtn = document.getElementById('avaliacaoBtn');
+      // Modal de avaliação
+      const modal = document.getElementById('evaluationModal');
+      const openFormBtn = document.getElementById('openForm');
+      const openFormBtn2 = document.getElementById('openForm2');
       const closeBtn = document.querySelector('.close');
-      const cancelarBtn = document.getElementById('cancelarBtn');
-      const enviarBtn = document.getElementById('enviarAvaliacaoBtn');
+      const closeModalBtn = document.getElementById('closeModal');
       
-      // Open modal
-      avaliacaoBtn.addEventListener('click', function(e) {
-        e.preventDefault();
+      function openModal() {
         modal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-      });
+        document.body.style.overflow = 'hidden';
+      }
       
-      // Close modal
       function closeModal() {
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scrolling
+        document.body.style.overflow = 'auto';
       }
       
+      openFormBtn.addEventListener('click', openModal);
+      openFormBtn2.addEventListener('click', openModal);
       closeBtn.addEventListener('click', closeModal);
-      cancelarBtn.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
       
-      // Close modal when clicking outside
-      window.addEventListener('click', function(e) {
-        if (e.target === modal) {
+      window.addEventListener('click', function(event) {
+        if (event.target == modal) {
           closeModal();
         }
       });
       
-      // Form submission
-      enviarBtn.addEventListener('click', function() {
-        const form = document.getElementById('avaliacaoForm');
-        const formData = new FormData(form);
-        
-        // Basic validation
-        let isValid = true;
-        const requiredFields = form.querySelectorAll('input[required]');
-        
-        requiredFields.forEach(field => {
-          if (!field.value.trim()) {
-            isValid = false;
-            field.style.borderColor = 'red';
-          } else {
-            field.style.borderColor = '#ddd';
-          }
-        });
-        
-        if (isValid) {
-          // Here you would typically send the form data to a server
-          // For now, we'll just show an alert and close the modal
-          alert('Obrigado pelo seu interesse! Entraremos em contato em breve para agendar sua avaliação gratuita.');
+      // Envio do formulário
+      document.getElementById('submitForm').addEventListener('click', function() {
+        const form = document.getElementById('evaluationForm');
+        if (form.checkValidity()) {
+          // Simulação de envio
+          alert('Obrigado! Sua solicitação foi enviada. Entraremos em contato em breve.');
           closeModal();
           form.reset();
         } else {
@@ -1688,26 +1586,41 @@
         }
       });
       
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            const headerHeight = document.querySelector('header').offsetHeight;
-            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-            
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-          }
-        });
+      // Menu Mobile
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileLinks = mobileNav.querySelectorAll('a');
+      
+      function toggleMobileMenu() {
+        mobileNav.classList.toggle('active');
+        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+      }
+      
+      function closeMobileMenu() {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+      
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+      
+      // Fechar menu ao clicar em um link
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
       });
+      
+      // Fechar menu ao clicar fora dele
+      document.addEventListener('click', function(event) {
+        if (mobileNav.classList.contains('active') && 
+            !mobileNav.contains(event.target) && 
+            event.target !== mobileMenuBtn) {
+          closeMobileMenu();
+        }
+      });
+      
+      // Correção para evitar problemas de visualização no iOS
+      if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
+        document.body.style.webkitTransform = 'translate3d(0,0,0)';
+      }
     });
   </script>
 </body>
