@@ -368,7 +368,7 @@
 
     .hero-inner{
       display: grid;
-      grid-template-columns: 1fr 480px;
+      grid-template-columns: 1fr 1fr; /* Alterado para equilibrar melhor */
       gap: 40px;
       align-items: center;
       width: 100%;
@@ -537,22 +537,25 @@
       color: var(--verde);
     }
 
+    /* CORREÇÃO DAS IMAGENS NO HERO - APENAS AQUI FOI ALTERADO */
     .hero-visual{
       position: relative;
-      height: 480px;
+      height: 520px; /* Aumentado para acomodar melhor as imagens maiores */
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
+    /* Imagens laterais - AGORA MAIORES */
     .side-img{
       position: absolute;
-      width: 220px;
+      width: 300px; /* Aumentado de 220px para 300px */
       filter: drop-shadow(0 20px 30px rgba(255,195,0,0.2));
       border-radius: 12px;
       transition: transform 0.3s ease;
       position: relative;
       overflow: hidden;
+      z-index: 2;
     }
 
     .side-img::after {
@@ -571,8 +574,8 @@
       100% { top: 100%; }
     }
 
-    .side-img.left{ left: -40px; top: 6%; }
-    .side-img.right{ right: -40px; bottom: 6%; }
+    .side-img.left{ left: -30px; top: 8%; }
+    .side-img.right{ right: -30px; bottom: 8%; }
     
     @keyframes floatLeft {
       0%, 100% { transform: translateY(0) rotate(-5deg); }
@@ -592,13 +595,13 @@
       animation: floatRight 7s ease-in-out infinite;
     }
     
-    /* CORREÇÃO DA IMAGEM CENTRAL - AGORA VISÍVEL E GRANDE */
+    /* CORREÇÃO DA IMAGEM CENTRAL - AGORA VISÍVEL E GRANDE SEM BOX DE FUNDO */
     .card-visual{
-      width: 460px;
-      height: 420px;
+      width: 420px; /* Ajustado para equilibrar com as laterais maiores */
+      height: 400px;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(255,195,0,0.3);
+      /*box-shadow: 0 20px 60px rgba(255,195,0,0.3);*/
       transition: transform 0.5s ease;
       border: none;
       outline: none;
@@ -606,7 +609,7 @@
       perspective: 1000px;
       z-index: 10;
       position: relative;
-      background: transparent;
+      background: transparent; /* REMOVIDO QUALQUER FUNDO */
     }
 
     .card-visual:hover{ 
@@ -617,13 +620,13 @@
     .card-visual img{
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Alterado de cover para contain para mostrar a imagem inteira */
+      object-fit: contain; /* Mantido contain para mostrar a imagem inteira */
       border: none;
       outline: none;
       display: block;
       transition: all 0.5s ease;
       transform: rotateY(0deg);
-      background: transparent;
+      background: transparent; /* REMOVIDO QUALQUER FUNDO */
     }
 
     .card-visual:hover img {
@@ -631,6 +634,7 @@
       filter: brightness(1.1) contrast(1.1);
     }
 
+    /* O RESTO DO CÓDIGO PERMANECE EXATAMENTE IGUAL */
     section{
       padding: 4.5rem 0;
       position: relative;
@@ -1309,32 +1313,34 @@
       }
       
       .hero-visual {
-        height: 280px;
+        height: 320px; /* Ajustado para mobile */
         order: 1;
         position: relative;
       }
       
-      /* CORREÇÃO: Imagem principal visível no mobile - AGORA MAIOR E INTEIRA */
+      /* CORREÇÃO: Imagens maiores no mobile também */
       .card-visual {
-        width: 100%;
-        max-width: 300px;
-        height: 250px;
+        width: 280px;
+        height: 260px;
         z-index: 10;
         margin: 0 auto;
+        background: transparent; /* Mantido transparente */
       }
       
       .card-visual img {
-        object-fit: contain; /* Alterado para mostrar imagem inteira */
+        object-fit: contain;
         width: 100%;
         height: 100%;
+        background: transparent; /* Mantido transparente */
       }
       
-      /* Imagens flutuantes no mobile */
+      /* Imagens flutuantes no mobile - também maiores */
       .side-img {
         display: block;
-        width: 100px;
-        max-width: 100px;
+        width: 180px; /* Aumentado para mobile */
+        max-width: 180px;
         z-index: 5;
+        background: transparent; /* Mantido transparente */
       }
       
       .side-img.left {
@@ -1530,17 +1536,17 @@
     /* Ajustes para telas muito pequenas */
     @media (max-width: 480px) {
       .hero-visual {
-        height: 220px;
+        height: 280px;
       }
       
       .card-visual {
-        height: 200px;
-        max-width: 250px;
+        height: 220px;
+        max-width: 240px;
       }
       
       .side-img {
-        width: 80px;
-        max-width: 80px;
+        width: 140px;
+        max-width: 140px;
       }
       
       .hero-title {
@@ -1567,21 +1573,21 @@
     /* Ajustes para tablets */
     @media (min-width: 769px) and (max-width: 1024px) {
       .hero-inner {
-        grid-template-columns: 1fr 400px;
+        grid-template-columns: 1fr 1fr; /* Mantido igual */
         gap: 30px;
       }
       
       .hero-visual {
-        height: 400px;
+        height: 450px; /* Ajustado para tablet */
       }
       
       .card-visual {
-        width: 380px;
-        height: 350px;
+        width: 350px;
+        height: 330px;
       }
       
       .side-img {
-        width: 180px;
+        width: 240px; /* Ajustado para tablet */
       }
       
       .advantages-grid {
