@@ -592,31 +592,38 @@
       animation: floatRight 7s ease-in-out infinite;
     }
     
+    /* CORREÇÃO DA IMAGEM CENTRAL - AGORA VISÍVEL E GRANDE */
     .card-visual{
       width: 460px;
       height: 420px;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: none;
+      box-shadow: 0 20px 60px rgba(255,195,0,0.3);
       transition: transform 0.5s ease;
       border: none;
       outline: none;
       transform-style: preserve-3d;
       perspective: 1000px;
       z-index: 10;
+      position: relative;
+      background: transparent;
     }
 
-    .card-visual:hover{ transform: scale(1.02) rotateY(5deg); }
+    .card-visual:hover{ 
+      transform: scale(1.02) rotateY(5deg); 
+      box-shadow: 0 25px 70px rgba(255,195,0,0.4);
+    }
 
     .card-visual img{
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain; /* Alterado de cover para contain para mostrar a imagem inteira */
       border: none;
       outline: none;
       display: block;
       transition: all 0.5s ease;
       transform: rotateY(0deg);
+      background: transparent;
     }
 
     .card-visual:hover img {
@@ -1307,7 +1314,7 @@
         position: relative;
       }
       
-      /* CORREÇÃO: Imagem principal visível no mobile */
+      /* CORREÇÃO: Imagem principal visível no mobile - AGORA MAIOR E INTEIRA */
       .card-visual {
         width: 100%;
         max-width: 300px;
@@ -1317,7 +1324,7 @@
       }
       
       .card-visual img {
-        object-fit: contain;
+        object-fit: contain; /* Alterado para mostrar imagem inteira */
         width: 100%;
         height: 100%;
       }
@@ -1690,7 +1697,7 @@
   <main class="hero" id="home" role="main">
     <div class="hero-inner container">
       <div class="hero-left">
-        <div class="kicker">Proteção lpara sua empresa</div>
+        <div class="kicker">Proteção para sua empresa</div>
         <h1 class="hero-title" id="heroTitle">
           HarpiaTI - <span class="highlight">O Seu Guardião Digital</span>
         </h1>
@@ -1797,7 +1804,7 @@
           <div class="img-row">
             <img src="harpiaimagens/Gemini_Generated_Image_c8uqxnc8uqxnc8uq.png" alt="harpia" loading="lazy">
           </div>
-          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Voo Inicial da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Voo Inicial da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
         </div>
         
         <div class="plan featured">
@@ -1836,7 +1843,7 @@
             <img src="harpiaimagens/Gemini_Generated_Image_8fuhgt8fuhgt8fuh.png" alt="harpia" loading="lazy">
             <img src="harpiaimagens/Gemini_Generated_Image_kwxjnzkwxjnzkwxj.png" alt="harpia" loading="lazy">
           </div>
-          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Ascensão da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Ascensão da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
         </div>
         
         <div class="plan">
@@ -1876,7 +1883,7 @@
             <img src="harpiaimagens/Gemini_Generated_Image_4ikwbs4ikwbs4ikw.png" alt="harpia" loading="lazy">
             <img src="harpiaimagens/Gemini_Generated_Image_n624knn624knn624.png" alt="harpia" loading="lazy">
           </div>
-          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Harpia da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Harpia da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
         </div>
       </div>
       
@@ -1900,7 +1907,7 @@
           <div class="img-row">
             <img src="harpiaimagens/Gemini_Generated_Image_c8uqxnc8uqxnc8uq.png" alt="harpia" loading="lazy">
           </div>
-          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Voo Inicial da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Voo Inicial da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
         </div>
         
         <div class="plan featured">
@@ -1923,7 +1930,7 @@
             <img src="harpiaimagens/Gemini_Generated_Image_8fuhgt8fuhgt8fuh.png" alt="harpia" loading="lazy">
             <img src="harpiaimagens/Gemini_Generated_Image_kwxjnzkwxjnzkwxj.png" alt="harpia" loading="lazy">
           </div>
-          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Ascensão da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Ascensão da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
         </div>
         
         <div class="plan">
@@ -1947,7 +1954,7 @@
             <img src="harpiaimagens/Gemini_Generated_Image_4ikwbs4ikwbs4ikw.png" alt="harpia" loading="lazy">
             <img src="harpiaimagens/Gemini_Generated_Image_n624knn624knn624.png" alt="harpia" loading="lazy">
           </div>
-          <a href="https://wa.me/5534999999999?text=Olá! Gostaria de contratar o plano Harpia da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Harpia da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
         </div>
       </div>
     </div>
@@ -2132,14 +2139,35 @@
         }
       });
       
-      // Envio do formulário
+      // INTEGRAÇÃO COM WHATSAPP - Envio do formulário
       document.getElementById('submitForm').addEventListener('click', function() {
         const form = document.getElementById('evaluationForm');
         if (form.checkValidity()) {
-          // Simulação de envio
-          alert('Obrigado! Sua solicitação foi enviada. Entraremos em contato em breve!');
+          // Coletar dados do formulário
+          const name = document.getElementById('name').value;
+          const company = document.getElementById('company').value;
+          const phone = document.getElementById('phone').value;
+          const email = document.getElementById('email').value;
+          const message = document.getElementById('message').value;
+          
+          // Criar mensagem para WhatsApp
+          const whatsappMessage = `*Nova Solicitação de Avaliação - HarpiaTI*%0A%0A` +
+            `*Nome:* ${name}%0A` +
+            `*Empresa:* ${company || 'Não informada'}%0A` +
+            `*Telefone:* ${phone}%0A` +
+            `*E-mail:* ${email}%0A` +
+            `*Mensagem:* ${message || 'Sem mensagem adicional'}`;
+          
+          // Número do WhatsApp (substitua pelo seu número)
+          const whatsappNumber = '5534999935533';
+          
+          // Abrir WhatsApp com a mensagem pré-preenchida
+          window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+          
+          // Fechar modal e resetar formulário
           closeModal();
           form.reset();
+          
         } else {
           alert('Por favor, preencha todos os campos obrigatórios!');
           // Focar no primeiro campo inválido
@@ -2211,4 +2239,3 @@
   </script>
 </body>
 </html>
-
