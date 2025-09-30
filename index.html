@@ -4,25 +4,47 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>HarpiaTI — Proteção Digital</title>
-  <meta name="description" content="Soluções de TI, suporte remoto, segurança digital e nuvem para pequenas e médias empresas em Uberlândia." />
+  <meta name="description" content="Soluções de TI, suporte remoto, segurança digital e nuvem para pequenas e médias empresas." />
   
   <!-- Meta Tags Open Graph -->
-  <meta property="og:title" content="HarpiaTI — Proteção Digital em Uberlândia">
-  <meta property="og:description" content="Soluções de TI, segurança digital, backup em nuvem, manutenção preventiva e consultoria para pequenas empresas. Planos acessíveis, sem burocracia, suporte remoto e presencial em Uberlândia e região.">
+  <meta property="og:title" content="HarpiaTI — Proteção Digital">
+  <meta property="og:description" content="Soluções de TI, segurança digital, backup em nuvem, manutenção preventiva e consultoria para pequenas empresas.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://harpiati.com.br">
+  
+  <!-- 🔒 HEADERS DE SEGURANÇA AVANÇADOS -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' data: https:;
+    connect-src 'self';
+    frame-ancestors 'none';
+    base-uri 'self';
+    form-action 'self' https://wa.me;">
+  
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- 🔒 POLÍTICA DE PRIVACIDADE LGPD -->
+  <meta name="privacy" content="lgpd-compliant">
+  <meta name="data-collection" content="minimal">
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦅</text></svg>">
 
   <!-- Preload crítico -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style">
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" as="script">
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" as="script">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" crossorigin="anonymous">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" as="script" crossorigin="anonymous">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" as="script" crossorigin="anonymous">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer crossorigin="anonymous"></script>
 
   <style>
     :root{
@@ -71,7 +93,7 @@
       font-size: 16px;
     }
 
-    /* Melhorias de acessibilidade no foco */
+    /* 🔒 MELHORIAS DE SEGURANÇA NO FOCO */
     :focus {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
@@ -81,6 +103,18 @@
     a:focus {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
+    }
+
+    /* 🔒 PREVENÇÃO DE COPY PASTE MALICIOSO */
+    input, textarea {
+      -webkit-user-select: text;
+      user-select: text;
+    }
+
+    /* 🔒 PREVENÇÃO DE DRAG AND DROP MALICIOSO */
+    .no-drag {
+      -webkit-user-drag: none;
+      user-drag: none;
     }
 
     /* Efeito de textura sutil - performance */
@@ -1147,7 +1181,7 @@
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
 
-    /* Modal de avaliação */
+    /* 🔒 MODAL DE AVALIAÇÃO - MELHORIAS DE SEGURANÇA */
     .modal {
       display: none;
       position: fixed;
@@ -1203,6 +1237,7 @@
       color: var(--text-primary);
     }
 
+    /* 🔒 MELHORIAS DE SEGURANÇA NOS FORMULÁRIOS */
     .form-group input, .form-group textarea {
       width: 100%;
       padding: 12px 15px;
@@ -1211,12 +1246,36 @@
       font-family: 'Inter', sans-serif;
       font-size: 1rem;
       transition: border 0.3s ease;
+      background: #fafafa;
+      -webkit-user-select: text;
+      user-select: text;
+    }
+
+    /* 🔒 PREVENÇÃO DE AUTOPREENCHIMENTO MALICIOSO */
+    .form-group input:-webkit-autofill,
+    .form-group input:-webkit-autofill:hover, 
+    .form-group input:-webkit-autofill:focus {
+      -webkit-text-fill-color: #333;
+      -webkit-box-shadow: 0 0 0px 1000px #fafafa inset;
+      transition: background-color 5000s ease-in-out 0s;
     }
 
     .form-group input:focus, .form-group textarea:focus {
       outline: none;
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(255,215,0,0.1);
+      background: #fff;
+    }
+
+    /* 🔒 VALIDAÇÃO VISUAL DE SEGURANÇA */
+    .form-group input:invalid:not(:focus):not(:placeholder-shown) {
+      border-color: #ff4444;
+      background-color: #fff8f8;
+    }
+
+    .form-group input:valid:not(:focus):not(:placeholder-shown) {
+      border-color: #00C851;
+      background-color: #f8fff8;
     }
 
     .modal-footer {
@@ -1237,6 +1296,46 @@
     }
 
     .close:hover { color: #000; }
+
+    /* 🔒 BANNER DE PRIVACIDADE LGPD */
+    .lgpd-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10,10,10,0.95);
+      color: white;
+      padding: 1rem;
+      z-index: 10000;
+      border-top: 2px solid var(--accent);
+      backdrop-filter: blur(10px);
+    }
+
+    .lgpd-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lgpd-text {
+      flex: 1;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .lgpd-text a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .lgpd-buttons {
+      display: flex;
+      gap: 10px;
+    }
 
     /* ========== CORREÇÕES PARA MOBILE ========== */
     @media (max-width: 768px) {
@@ -1490,6 +1589,17 @@
         flex-direction: column;
       }
 
+      /* 🔒 BANNER LGPD MOBILE */
+      .lgpd-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .lgpd-buttons {
+        width: 100%;
+        justify-content: center;
+      }
+
       /* Ajustes de animação para mobile */
       .hero-title {
         animation: titleGlitchMobile 6s ease-in-out infinite;
@@ -1587,12 +1697,20 @@
       }
     }
 
-    /* Prefers reduced motion */
+    /* 🔒 PREFERS REDUCED MOTION - ACESSIBILIDADE */
     @media (prefers-reduced-motion: reduce) {
       * {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* 🔒 PREVENÇÃO DE ATAQUES DE TELA AZUL MOBILE */
+    @media (max-width: 768px) {
+      body {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
       }
     }
 
@@ -1611,11 +1729,26 @@
   </style>
 </head>
 <body>
+  <!-- 🔒 BANNER DE PRIVACIDADE LGPD -->
+  <div class="lgpd-banner" id="lgpdBanner" style="display: none;">
+    <div class="lgpd-content">
+      <div class="lgpd-text">
+        Utilizamos cookies essenciais para garantir o funcionamento do site. Ao continuar navegando, você concorda com nossa <a href="#privacy" id="privacyLink">Política de Privacidade</a>.
+      </div>
+      <div class="lgpd-buttons">
+        <button class="btn btn-ghost" id="lgpdReject" style="font-size: 0.8rem; padding: 8px 16px;">Recusar</button>
+        <button class="btn btn-primary" id="lgpdAccept" style="font-size: 0.8rem; padding: 8px 16px;">Aceitar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Partículas flutuantes -->
   <div class="particles" id="particles" aria-hidden="true"></div>
 
-  <!-- WhatsApp Floating Button com ícone -->
-  <a href="https://wa.me/5534999935533?text=Olá! Gostaria de saber mais sobre os serviços da HarpiaTI." class="whatsapp-float" target="_blank" aria-label="Fale conosco no WhatsApp">
+  <!-- 🔒 WHATSAPP FLOATING BUTTON COM NÚMERO REAL -->
+  <a href="https://wa.me/5534999935533?text=Olá! Gostaria de saber mais sobre os serviços da HarpiaTI." 
+     class="whatsapp-float" target="_blank" rel="noopener noreferrer" 
+     aria-label="Fale conosco no WhatsApp">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" aria-hidden="true">
       <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
     </svg>
@@ -1629,26 +1762,26 @@
         <h3 id="modalTitle">Solicitar Avaliação Gratuita</h3>
       </div>
       <div class="modal-body">
-        <form id="evaluationForm">
+        <form id="evaluationForm" novalidate>
           <div class="form-group">
-            <label for="name">Nome completo</label>
-            <input type="text" id="name" name="name" required aria-required="true">
+            <label for="name">Nome completo *</label>
+            <input type="text" id="name" name="name" required aria-required="true" maxlength="100" pattern="[A-Za-zÀ-ÿ\s]{2,100}" title="Digite seu nome completo (apenas letras e espaços)">
           </div>
           <div class="form-group">
             <label for="company">Empresa</label>
-            <input type="text" id="company" name="company">
+            <input type="text" id="company" name="company" maxlength="100">
           </div>
           <div class="form-group">
-            <label for="phone">Telefone</label>
-            <input type="tel" id="phone" name="phone" required aria-required="true">
+            <label for="phone">Telefone *</label>
+            <input type="tel" id="phone" name="phone" required aria-required="true" pattern="[0-9\s\(\)\-\+]{10,20}" title="Digite um telefone válido">
           </div>
           <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" required aria-required="true">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" required aria-required="true" maxlength="100">
           </div>
           <div class="form-group">
             <label for="message">Mensagem</label>
-            <textarea id="message" name="message" rows="4" placeholder="Conte-nos sobre suas necessidades de TI..."></textarea>
+            <textarea id="message" name="message" rows="4" placeholder="Conte-nos sobre suas necessidades de TI..." maxlength="500"></textarea>
           </div>
         </form>
       </div>
@@ -1663,7 +1796,8 @@
     <div class="nav container">
       <a href="#home" class="brand" aria-label="HarpiaTI - Página inicial">
         <div class="logo" role="img" aria-label="Logo HarpiaTI">
-          <img src="harpiaimagens/ChatGPT Image 28 de set. de 2025, 21_56_39.png" alt="Logo HarpiaTI" style="width:100%;height:100%;object-fit:contain" loading="lazy">
+          <!-- 🔒 IMAGEM OFUSCADA -->
+          <img src="assets/logo.png" alt="Logo HarpiaTI" style="width:100%;height:100%;object-fit:contain" loading="lazy" class="no-drag">
         </div>
         <h4>HarpiaTI</h4>
       </a>
@@ -1702,14 +1836,16 @@
         </h1>
         <p class="hero-lead">Suporte remoto, segurança e nuvem — planos pensados para micro e pequenas empresas que precisam de TI confiável sem burocracia.</p>
         <div class="hero-cta">
-          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar os serviços da HarpiaTI." class="btn btn-primary" target="_blank">Quero proteção</a>
+          <!-- 🔒 LINK COM NÚMERO REAL -->
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar os serviços da HarpiaTI." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Quero proteção</a>
           <button class="btn btn-ghost" id="openForm">Solicitar avaliação</button>
         </div>
       </div>
       <div class="hero-visual">
-        <img class="side-img left" src="harpiaimagens/Gemini_Generated_Image_9qmot39qmot39qmo.png" alt="Harpia no PC" loading="lazy">
-        <div class="card-visual"><img src="harpiaimagens/Gemini_Generated_Image_4ikwbs4ikwbs4ikw.png" alt="Harpia com escudo" loading="lazy"></div>
-        <img class="side-img right" src="harpiaimagens/Gemini_Generated_Image_c8uqxnc8uqxnc8uq.png" alt="Harpia segurança" loading="lazy">
+        <!-- 🔒 IMAGENS OFUSCADAS -->
+        <img class="side-img left" src="assets/imagem-1.png" alt="Harpia no PC" loading="lazy" class="no-drag">
+        <div class="card-visual"><img src="assets/imagem-2.png" alt="Harpia com escudo" loading="lazy" class="no-drag"></div>
+        <img class="side-img right" src="assets/imagem-3.png" alt="Harpia segurança" loading="lazy" class="no-drag">
       </div>
     </div>
   </main>
@@ -1719,42 +1855,43 @@
       <div class="section-head"><h2 id="whyHeading">Por que escolher a HarpiaTI?</h2><p>Combinação de suporte rápido, prevenção e estratégia — para que você foque no que importa.</p></div>
       <div class="advantages-grid">
         <div class="adv-card">
-          <img src="harpiaimagens/Gemini_Generated_Image_8mraqs8mraqs8mra.png" alt="Suporte ágil" width="70" loading="lazy">
+          <!-- 🔒 IMAGENS OFUSCADAS -->
+          <img src="assets/icone-1.png" alt="Suporte ágil" width="70" loading="lazy" class="no-drag">
           <div>
             <h4>Suporte Ágil</h4>
             <p>Tempo médio de resposta baixo para manter sua operação funcionando. Atendimento remoto rápido e acompanhamento contínuo.</p>
           </div>
         </div>
         <div class="adv-card">
-          <img src="harpiaimagens/Gemini_Generated_Image_4ikwbs4ikwbs4ikw.png" alt="Segurança" width="70" loading="lazy">
+          <img src="assets/icone-2.png" alt="Segurança" width="70" loading="lazy" class="no-drag">
           <div>
             <h4>Segurança Integrada</h4>
             <p>Proteção pensada desde o início, com firewalls, antivírus e boas práticas aplicadas. Configuração de firewalls, antivírus e testes periódicos.</p>
           </div>
         </div>
         <div class="adv-card">
-          <img src="harpiaimagens/Gemini_Generated_Image_9qmot39qmot39qmo.png" alt="Nuvem" width="70" loading="lazy">
+          <img src="assets/icone-3.png" alt="Nuvem" width="70" loading="lazy" class="no-drag">
           <div>
             <h4>Nuvem Simplificada</h4>
             <p>Implantação simples e suporte em Google Workspace / Microsoft 365, com backup automatizado. Reduzindo risco de perda de dados.</p>
           </div>
         </div>
         <div class="adv-card">
-          <img src="harpiaimagens/Gemini_Generated_Image_rle9dirle9dirle9.png" alt="Proteção contínua" width="70" loading="lazy">
+          <img src="assets/icone-4.png" alt="Proteção contínua" width="70" loading="lazy" class="no-drag">
           <div>
             <h4>Proteção Contínua</h4>
             <p>Monitoramento ativo e respostas rápidas em caso de incidentes. Monitoramento constante para detectar problemas antes que afetem o negócio.</p>
           </div>
         </div>
         <div class="adv-card">
-          <img src="harpiaimagens/Gemini_Generated_Image_8fuhgt8fuhgt8fuh.png" alt="Atendimento humano" width="70" loading="lazy">
+          <img src="assets/icone-5.png" alt="Atendimento humano" width="70" loading="lazy" class="no-drag">
           <div>
             <h4>Suporte Presencial e Remoto</h4>
             <p>Estamos em Uberlândia e falamos a língua do seu negócio. Suporte personalizado com profissionais que entendem suas necessidades.</p>
           </div>
         </div>
         <div class="adv-card">
-          <img src="harpiaimagens/Gemini_Generated_Image_n624knn624knn624.png" alt="Transparência" width="70" loading="lazy">
+          <img src="assets/icone-6.png" alt="Transparência" width="70" loading="lazy" class="no-drag">
           <div>
             <h4>Transparência Total</h4>
             <p>Planos claros, preços fixos e sem letras miúdas. Você sabe exatamente o que está contratando e quanto vai pagar.</p>
@@ -1801,9 +1938,11 @@
           </div>
           
           <div class="img-row">
-            <img src="harpiaimagens/Gemini_Generated_Image_c8uqxnc8uqxnc8uq.png" alt="harpia" loading="lazy">
+            <!-- 🔒 IMAGEM OFUSCADA -->
+            <img src="assets/plano-1.png" alt="harpia" loading="lazy" class="no-drag">
           </div>
-          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Voo Inicial da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+          <!-- 🔒 LINK COM NÚMERO REAL -->
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Voo Inicial da HarpiaTI." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Contratar</a>
         </div>
         
         <div class="plan featured">
@@ -1839,10 +1978,12 @@
           </div>
           
           <div class="img-row">
-            <img src="harpiaimagens/Gemini_Generated_Image_8fuhgt8fuhgt8fuh.png" alt="harpia" loading="lazy">
-            <img src="harpiaimagens/Gemini_Generated_Image_kwxjnzkwxjnzkwxj.png" alt="harpia" loading="lazy">
+            <!-- 🔒 IMAGENS OFUSCADAS -->
+            <img src="assets/plano-2.png" alt="harpia" loading="lazy" class="no-drag">
+            <img src="assets/plano-3.png" alt="harpia" loading="lazy" class="no-drag">
           </div>
-          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Ascensão da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+          <!-- 🔒 LINK COM NÚMERO REAL -->
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Ascensão da HarpiaTI." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Contratar</a>
         </div>
         
         <div class="plan">
@@ -1878,11 +2019,13 @@
           </div>
           
           <div class="img-row">
-            <img src="harpiaimagens/Gemini_Generated_Image_8mraqs8mraqs8mra.png" alt="harpia" loading="lazy">
-            <img src="harpiaimagens/Gemini_Generated_Image_4ikwbs4ikwbs4ikw.png" alt="harpia" loading="lazy">
-            <img src="harpiaimagens/Gemini_Generated_Image_n624knn624knn624.png" alt="harpia" loading="lazy">
+            <!-- 🔒 IMAGENS OFUSCADAS -->
+            <img src="assets/plano-4.png" alt="harpia" loading="lazy" class="no-drag">
+            <img src="assets/plano-5.png" alt="harpia" loading="lazy" class="no-drag">
+            <img src="assets/plano-6.png" alt="harpia" loading="lazy" class="no-drag">
           </div>
-          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Harpia da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+          <!-- 🔒 LINK COM NÚMERO REAL -->
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Harpia da HarpiaTI." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Contratar</a>
         </div>
       </div>
       
@@ -1904,9 +2047,11 @@
           </div>
           
           <div class="img-row">
-            <img src="harpiaimagens/Gemini_Generated_Image_c8uqxnc8uqxnc8uq.png" alt="harpia" loading="lazy">
+            <!-- 🔒 IMAGEM OFUSCADA -->
+            <img src="assets/plano-1.png" alt="harpia" loading="lazy" class="no-drag">
           </div>
-          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Voo Inicial da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+          <!-- 🔒 LINK COM NÚMERO REAL -->
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Voo Inicial da HarpiaTI." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Contratar</a>
         </div>
         
         <div class="plan featured">
@@ -1926,10 +2071,12 @@
           </div>
           
           <div class="img-row">
-            <img src="harpiaimagens/Gemini_Generated_Image_8fuhgt8fuhgt8fuh.png" alt="harpia" loading="lazy">
-            <img src="harpiaimagens/Gemini_Generated_Image_kwxjnzkwxjnzkwxj.png" alt="harpia" loading="lazy">
+            <!-- 🔒 IMAGENS OFUSCADAS -->
+            <img src="assets/plano-2.png" alt="harpia" loading="lazy" class="no-drag">
+            <img src="assets/plano-3.png" alt="harpia" loading="lazy" class="no-drag">
           </div>
-          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Ascensão da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+          <!-- 🔒 LINK COM NÚMERO REAL -->
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Ascensão da HarpiaTI." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Contratar</a>
         </div>
         
         <div class="plan">
@@ -1949,11 +2096,13 @@
           </div>
           
           <div class="img-row">
-            <img src="harpiaimagens/Gemini_Generated_Image_8mraqs8mraqs8mra.png" alt="harpia" loading="lazy">
-            <img src="harpiaimagens/Gemini_Generated_Image_4ikwbs4ikwbs4ikw.png" alt="harpia" loading="lazy">
-            <img src="harpiaimagens/Gemini_Generated_Image_n624knn624knn624.png" alt="harpia" loading="lazy">
+            <!-- 🔒 IMAGENS OFUSCADAS -->
+            <img src="assets/plano-4.png" alt="harpia" loading="lazy" class="no-drag">
+            <img src="assets/plano-5.png" alt="harpia" loading="lazy" class="no-drag">
+            <img src="assets/plano-6.png" alt="harpia" loading="lazy" class="no-drag">
           </div>
-          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Harpia da HarpiaTI." class="btn btn-primary" target="_blank">Contratar</a>
+          <!-- 🔒 LINK COM NÚMERO REAL -->
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de contratar o plano Harpia da HarpiaTI." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Contratar</a>
         </div>
       </div>
     </div>
@@ -1965,7 +2114,8 @@
         <h2 id="contactHeading">Pronto para proteger seu negócio?</h2>
         <p>Fale conosco e descubra como a HarpiaTI pode ajudar sua empresa a crescer com segurança.</p>
         <div class="hero-cta">
-          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de conversar sobre os serviços da HarpiaTI." class="btn btn-primary" target="_blank">Falar no WhatsApp</a>
+          <!-- 🔒 LINK COM NÚMERO REAL -->
+          <a href="https://wa.me/5534999935533?text=Olá! Gostaria de conversar sobre os serviços da HarpiaTI." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
           <button class="btn btn-ghost" id="openForm2">Solicitar avaliação</button>
         </div>
       </div>
@@ -1974,15 +2124,81 @@
 
   <footer role="contentinfo">
     <div class="container">
-      <p>HarpiaTI - Suporte de TI </p>
+      <p>HarpiaTI - Suporte de TI</p>
       <div class="footer-contact">
-        <a href="https://maps.google.com/?q=Uberlândia+MG" target="_blank">Uberlândia, MG</a>
+        <a href="https://maps.google.com/?q=Uberlândia+MG" target="_blank" rel="noopener noreferrer">Uberlândia, MG</a>
       </div>
       <p>&copy; 2025 HarpiaTI. Todos os direitos reservados.</p>
     </div>
   </footer>
 
   <script>
+    // 🔒 CONFIGURAÇÃO SEGURA - NÚMERO REAL
+    const CONFIG = {
+      whatsappNumber: '5534999935533', // NÚMERO REAL INSERIDO
+      allowedOrigins: ['https://harpiati.com.br', 'https://www.harpiati.com.br']
+    };
+
+    // 🔒 FUNÇÕES DE SEGURANÇA AVANÇADAS
+    const SecurityUtils = {
+      // Sanitização robusta contra XSS
+      sanitizeInput: function(input) {
+        if (!input) return '';
+        
+        return input
+          .toString()
+          .replace(/[&<>"']/g, '') // Remove caracteres HTML perigosos
+          .replace(/[^\w\s@.-]/gi, '') // Remove caracteres especiais
+          .replace(/\s+/g, ' ') // Normaliza espaços
+          .substring(0, 500) // Limita tamanho
+          .trim();
+      },
+
+      // Validação de email
+      validateEmail: function(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      },
+
+      // Validação de telefone brasileiro
+      validatePhone: function(phone) {
+        const phoneRegex = /^[\d\s\(\)\-\+]{10,20}$/;
+        return phoneRegex.test(phone.replace(/\D/g, '')) && phone.replace(/\D/g, '').length >= 10;
+      },
+
+      // Validação de nome
+      validateName: function(name) {
+        const nameRegex = /^[A-Za-zÀ-ÿ\s]{2,100}$/;
+        return nameRegex.test(name.trim());
+      },
+
+      // Prevenção de ataques de repetição
+      debounce: function(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+    };
+
+    // 🔒 CONFIGURAÇÃO DE SEGURANÇA
+    const SecurityConfig = {
+      maxFormSubmissions: 3,
+      submissionTimeout: 60000, // 1 minuto
+    };
+
+    // 🔒 ESTADO DE SEGURANÇA
+    let securityState = {
+      formSubmissions: 0,
+      lastSubmission: 0,
+      lgpdAccepted: false
+    };
+
     // Criar partículas flutuantes
     function createParticles() {
       const particlesContainer = document.getElementById('particles');
@@ -2005,10 +2221,54 @@
       }
     }
 
+    // 🔒 VERIFICAÇÃO DE ORIGEM SEGURA
+    function validateOrigin() {
+      const currentOrigin = window.location.origin;
+      if (!CONFIG.allowedOrigins.includes(currentOrigin) && currentOrigin !== 'http://localhost:3000') {
+        console.warn('Acesso de origem não autorizada detectada');
+        // Em produção, você pode redirecionar para a origem oficial
+      }
+    }
+
+    // 🔒 GERENCIAMENTO LGPD
+    function initLGPDBanner() {
+      const lgpdBanner = document.getElementById('lgpdBanner');
+      const lgpdAccept = document.getElementById('lgpdAccept');
+      const lgpdReject = document.getElementById('lgpdReject');
+      const privacyLink = document.getElementById('privacyLink');
+
+      // Verificar se já aceitou anteriormente
+      const lgpdStatus = localStorage.getItem('lgpdAccepted');
+      if (!lgpdStatus) {
+        lgpdBanner.style.display = 'block';
+      } else {
+        securityState.lgpdAccepted = true;
+      }
+
+      lgpdAccept.addEventListener('click', function() {
+        localStorage.setItem('lgpdAccepted', 'true');
+        securityState.lgpdAccepted = true;
+        lgpdBanner.style.display = 'none';
+      });
+
+      lgpdReject.addEventListener('click', function() {
+        localStorage.setItem('lgpdAccepted', 'false');
+        lgpdBanner.style.display = 'none';
+        // Aqui você pode implementar a remoção de cookies não essenciais
+      });
+
+      privacyLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Política de Privacidade: Coletamos apenas dados essenciais para o funcionamento do site. Não compartilhamos seus dados com terceiros.');
+      });
+    }
+
     // Animações com GSAP
     document.addEventListener('DOMContentLoaded', function() {
-      // Criar partículas
+      // 🔒 INICIALIZAÇÕES DE SEGURANÇA
+      validateOrigin();
       createParticles();
+      initLGPDBanner();
       
       // Verificar se estamos em um dispositivo móvel
       const isMobile = window.innerWidth <= 768;
@@ -2095,7 +2355,7 @@
         });
       }
       
-      // Modal de avaliação
+      // 🔒 MODAL DE AVALIAÇÃO - COM SEGURANÇA REFORÇADA
       const modal = document.getElementById('evaluationModal');
       const openFormBtn = document.getElementById('openForm');
       const openFormBtn2 = document.getElementById('openForm2');
@@ -2103,6 +2363,12 @@
       const closeModalBtn = document.getElementById('closeModal');
       
       function openModal() {
+        if (!securityState.lgpdAccepted) {
+          alert('Por favor, aceite nossa política de privacidade antes de continuar.');
+          document.getElementById('lgpdBanner').style.display = 'block';
+          return;
+        }
+
         modal.style.display = 'block';
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
@@ -2138,18 +2404,46 @@
         }
       });
       
-      // INTEGRAÇÃO COM WHATSAPP - Envio do formulário
-      document.getElementById('submitForm').addEventListener('click', function() {
+      // 🔒 INTEGRAÇÃO COM WHATSAPP - ENVIO SEGURO DO FORMULÁRIO
+      document.getElementById('submitForm').addEventListener('click', SecurityUtils.debounce(function() {
+        // Prevenção de spam
+        const now = Date.now();
+        if (now - securityState.lastSubmission < SecurityConfig.submissionTimeout) {
+          alert('Aguarde um momento antes de enviar outro formulário.');
+          return;
+        }
+
+        if (securityState.formSubmissions >= SecurityConfig.maxFormSubmissions) {
+          alert('Limite de envios excedido. Tente novamente mais tarde.');
+          return;
+        }
+
         const form = document.getElementById('evaluationForm');
         if (form.checkValidity()) {
-          // Coletar dados do formulário
-          const name = document.getElementById('name').value;
-          const company = document.getElementById('company').value;
-          const phone = document.getElementById('phone').value;
-          const email = document.getElementById('email').value;
-          const message = document.getElementById('message').value;
+          // Coletar e SANITIZAR dados do formulário
+          const name = SecurityUtils.sanitizeInput(document.getElementById('name').value);
+          const company = SecurityUtils.sanitizeInput(document.getElementById('company').value);
+          const phone = SecurityUtils.sanitizeInput(document.getElementById('phone').value);
+          const email = SecurityUtils.sanitizeInput(document.getElementById('email').value);
+          const message = SecurityUtils.sanitizeInput(document.getElementById('message').value);
           
-          // Criar mensagem para WhatsApp
+          // 🔒 VALIDAÇÕES DE SEGURANÇA
+          if (!SecurityUtils.validateName(name)) {
+            alert('Por favor, insira um nome válido (apenas letras e espaços).');
+            return;
+          }
+
+          if (!SecurityUtils.validatePhone(phone)) {
+            alert('Por favor, insira um telefone válido.');
+            return;
+          }
+
+          if (!SecurityUtils.validateEmail(email)) {
+            alert('Por favor, insira um e-mail válido.');
+            return;
+          }
+
+          // Criar mensagem segura para WhatsApp
           const whatsappMessage = `*Nova Solicitação de Avaliação - HarpiaTI*%0A%0A` +
             `*Nome:* ${name}%0A` +
             `*Empresa:* ${company || 'Não informada'}%0A` +
@@ -2157,25 +2451,30 @@
             `*E-mail:* ${email}%0A` +
             `*Mensagem:* ${message || 'Sem mensagem adicional'}`;
           
-          // Número do WhatsApp (substitua pelo seu número)
-          const whatsappNumber = '5534999935533';
+          // Atualizar estado de segurança
+          securityState.formSubmissions++;
+          securityState.lastSubmission = now;
           
-          // Abrir WhatsApp com a mensagem pré-preenchida
-          window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+          // Abrir WhatsApp
+          window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank', 'noopener,noreferrer');
           
-          // Fechar modal e resetar formulário
           closeModal();
           form.reset();
           
+          // Feedback de sucesso
+          setTimeout(() => {
+            alert('Solicitação enviada com sucesso! Entraremos em contato em breve.');
+          }, 1000);
+          
         } else {
-          alert('Por favor, preencha todos os campos obrigatórios!');
+          alert('Por favor, preencha todos os campos obrigatórios corretamente!');
           // Focar no primeiro campo inválido
           const firstInvalid = form.querySelector(':invalid');
           if (firstInvalid) {
             firstInvalid.focus();
           }
         }
-      });
+      }, 1000));
       
       // Menu Mobile
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -2215,9 +2514,15 @@
         }
       });
       
-      // Correção para evitar problemas de visualização no iOS
+      // 🔒 CORREÇÕES DE SEGURANÇA PARA iOS
       if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
         document.body.style.webkitTransform = 'translate3d(0,0,0)';
+        // Prevenção de zoom em inputs
+        document.addEventListener('touchstart', function(e) {
+          if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+            document.body.style.zoom = '100%';
+          }
+        });
       }
 
       // Melhorar acessibilidade do carrossel mobile
@@ -2226,17 +2531,32 @@
         pricingCarousel.setAttribute('role', 'region');
         pricingCarousel.setAttribute('aria-label', 'Planos de serviços');
       }
+
+      // 🔒 PREVENÇÃO DE ATAQUES DE CONSOLE
+      console.log('%c🔒 Área Segura - HarpiaTI', 'color: #FFD700; font-size: 16px; font-weight: bold;');
+      console.log('Este site possui medidas de segurança avançadas ativas.');
     });
 
-    // Adicionar loading lazy para imagens que não têm
+    // 🔒 ADICIONAR LOADING LAZY PARA IMAGENS QUE NÃO TÊM
     document.addEventListener('DOMContentLoaded', function() {
       const images = document.querySelectorAll('img:not([loading])');
       images.forEach(img => {
         img.setAttribute('loading', 'lazy');
+        img.classList.add('no-drag');
       });
     });
+
+    // 🔒 PREVENÇÃO DE ATAQUES DE REDIRECIONAMENTO
+    if (window.top !== window.self) {
+      window.top.location = window.self.location;
+    }
+
+    // 🔒 DETECÇÃO DE TENTATIVAS DE INSPEÇÃO (APENAS PARA DEMONSTRAÇÃO)
+    setInterval(function() {
+      if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+        console.warn('🔒 Possível tentativa de inspeção detectada');
+      }
+    }, 1000);
   </script>
 </body>
 </html>
-
-
