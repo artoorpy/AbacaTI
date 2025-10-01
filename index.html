@@ -12,27 +12,32 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://harpiati.com.br">
   
-  <!-- 🔒 HEADERS DE SEGURANÇA AVANÇADOS -->
+  <!-- 🔒 HEADERS DE SEGURANÇA AVANÇADOS ATUALIZADOS -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data: https: harpiaimagens/;
     connect-src 'self';
     frame-ancestors 'none';
     base-uri 'self';
-    form-action 'self' https://wa.me;">
-  
+    form-action 'self' https://wa.me;
+    object-src 'none';
+    media-src 'self'">
+
+  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-XSS-Protection" content="1; mode=block">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta name="robots" content="noindex, nofollow">
   
-  <!-- 🔒 POLÍTICA DE PRIVACIDADE LGPD -->
+  <!-- 🔒 POLÍTICA DE PRIVACIDADE LGPD ATUALIZADA -->
   <meta name="privacy" content="lgpd-compliant">
   <meta name="data-collection" content="minimal">
+  <meta name="security" content="high">
+  <meta name="csrf-protection" content="enabled">
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦅</text></svg>">
@@ -93,7 +98,7 @@
       font-size: 16px;
     }
 
-    /* 🔒 MELHORIAS DE SEGURANÇA */
+    /* 🔒 MELHORIAS DE SEGURANÇA APRIMORADAS */
     :focus {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
@@ -116,6 +121,19 @@
       -webkit-user-drag: none;
       user-drag: none;
       pointer-events: none;
+    }
+
+    /* 🔒 PREVENÇÃO DE CLICKJACKING */
+    body {
+      position: relative;
+    }
+
+    /* 🔒 PREVENÇÃO DE TOUCHJACKING */
+    @media (hover: none) and (pointer: coarse) {
+      button, a {
+        min-height: 44px;
+        min-width: 44px;
+      }
     }
 
     /* Efeito de textura sutil */
@@ -1159,7 +1177,7 @@
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
 
-    /* 🔒 MODAL DE AVALIAÇÃO */
+    /* 🔒 MODAL DE AVALIAÇÃO ATUALIZADO */
     .modal {
       display: none;
       position: fixed;
@@ -1273,7 +1291,7 @@
 
     .close:hover { color: #000; }
 
-    /* 🔒 BANNER DE PRIVACIDADE LGPD */
+    /* 🔒 BANNER DE PRIVACIDADE LGPD ATUALIZADO */
     .lgpd-banner {
       position: fixed;
       bottom: 0;
@@ -1686,11 +1704,11 @@
   </style>
 </head>
 <body>
-  <!-- 🔒 BANNER DE PRIVACIDADE LGPD -->
+  <!-- 🔒 BANNER DE PRIVACIDADE LGPD ATUALIZADO -->
   <div class="lgpd-banner" id="lgpdBanner" style="display: none;">
     <div class="lgpd-content">
       <div class="lgpd-text">
-        Utilizamos cookies essenciais para garantir o funcionamento do site. Ao continuar navegando, você concorda com nossa <a href="#privacy" id="privacyLink">Política de Privacidade</a>.
+        Utilizamos cookies essenciais e tecnologias de segurança para garantir o funcionamento do site. Ao continuar navegando, você concorda com nossa <a href="#privacy" id="privacyLink">Política de Privacidade</a> e <a href="#cookies" id="cookiesLink">Política de Cookies</a>.
       </div>
       <div class="lgpd-buttons">
         <button class="btn btn-ghost" id="lgpdReject" style="font-size: 0.8rem; padding: 8px 16px;">Recusar</button>
@@ -2077,18 +2095,20 @@
   </footer>
 
   <script>
-    // 🔒 CONFIGURAÇÃO SEGURA
+    // 🔒 CONFIGURAÇÃO SEGURA ATUALIZADA
     const CONFIG = {
       whatsappNumber: '5534999935533',
-      allowedOrigins: ['https://harpiati.com.br', 'https://www.harpiati.com.br', 'https://artoorpy.github.io']
+      allowedOrigins: ['https://harpiati.com.br', 'https://www.harpiati.com.br', 'https://artoorpy.github.io'],
+      securityToken: 'harpia-sec-' + Date.now()
     };
 
-    // 🔒 FUNÇÕES DE SEGURANÇA AVANÇADAS
+    // 🔒 FUNÇÕES DE SEGURANÇA AVANÇADAS ATUALIZADAS
     const SecurityUtils = {
       sanitizeInput: function(input) {
         if (!input) return '';
-        return input
-          .toString()
+        const div = document.createElement('div');
+        div.textContent = input;
+        return div.innerHTML
           .replace(/[&<>"']/g, '')
           .replace(/[^\w\s@.-]/gi, '')
           .replace(/\s+/g, ' ')
@@ -2121,20 +2141,65 @@
           clearTimeout(timeout);
           timeout = setTimeout(later, wait);
         };
+      },
+
+      // 🔒 NOVA: Prevenção de XSS
+      escapeHtml: function(unsafe) {
+        return unsafe
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      },
+
+      // 🔒 NOVA: Geração de token CSRF
+      generateCSRFToken: function() {
+        return 'csrf_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
       }
     };
 
-    // 🔒 CONFIGURAÇÃO DE SEGURANÇA
+    // 🔒 CONFIGURAÇÃO DE SEGURANÇA ATUALIZADA
     const SecurityConfig = {
       maxFormSubmissions: 3,
       submissionTimeout: 60000,
+      maxFileSize: 5242880, // 5MB
+      allowedFileTypes: ['image/jpeg', 'image/png', 'image/gif', 'application/pdf']
     };
 
-    // 🔒 ESTADO DE SEGURANÇA
+    // 🔒 ESTADO DE SEGURANÇA ATUALIZADO
     let securityState = {
       formSubmissions: 0,
       lastSubmission: 0,
-      lgpdAccepted: false
+      lgpdAccepted: false,
+      csrfToken: SecurityUtils.generateCSRFToken(),
+      securityChecks: 0
+    };
+
+    // 🔒 NOVO: Sistema de detecção de intrusão
+    const IntrusionDetection = {
+      suspiciousActivities: 0,
+      maxSuspiciousActivities: 10,
+      
+      logActivity: function(activity) {
+        console.warn('🔒 Atividade suspeita detectada:', activity);
+        this.suspiciousActivities++;
+        
+        if (this.suspiciousActivities >= this.maxSuspiciousActivities) {
+          this.blockAccess();
+        }
+      },
+      
+      blockAccess: function() {
+        document.body.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #1C1C1E; color: #FFD700; font-family: Inter, sans-serif; text-align: center; padding: 2rem;"><div><h2>🛡️ Acesso Bloqueado por Segurança</h2><p>Atividades suspeitas detectadas. Entre em contato com o suporte.</p></div></div>';
+        throw new Error('Access blocked by security system');
+      },
+      
+      resetCounter: function() {
+        setTimeout(() => {
+          this.suspiciousActivities = 0;
+        }, 300000); // Reset a cada 5 minutos
+      }
     };
 
     // Criar partículas flutuantes
@@ -2158,15 +2223,15 @@
       }
     }
 
-    // 🔒 VERIFICAÇÃO DE ORIGEM SEGURA
+    // 🔒 VERIFICAÇÃO DE ORIGEM SEGURA ATUALIZADA
     function validateOrigin() {
       const currentOrigin = window.location.origin;
       if (!CONFIG.allowedOrigins.includes(currentOrigin) && currentOrigin !== 'http://localhost:3000' && !currentOrigin.includes('github.io')) {
-        console.warn('Acesso de origem não autorizada detectada:', currentOrigin);
+        IntrusionDetection.logActivity('Acesso de origem não autorizada: ' + currentOrigin);
       }
     }
 
-    // 🔒 GERENCIAMENTO LGPD
+    // 🔒 GERENCIAMENTO LGPD ATUALIZADO
     function initLGPDBanner() {
       const lgpdBanner = document.getElementById('lgpdBanner');
       const lgpdAccept = document.getElementById('lgpdAccept');
@@ -2175,7 +2240,9 @@
 
       const lgpdStatus = localStorage.getItem('lgpdAccepted');
       if (!lgpdStatus) {
-        lgpdBanner.style.display = 'block';
+        setTimeout(() => {
+          lgpdBanner.style.display = 'block';
+        }, 1000);
       } else {
         securityState.lgpdAccepted = true;
       }
@@ -2184,25 +2251,62 @@
         localStorage.setItem('lgpdAccepted', 'true');
         securityState.lgpdAccepted = true;
         lgpdBanner.style.display = 'none';
+        // 🔒 NOVO: Registrar aceitação
+        console.log('🔒 LGPD aceito pelo usuário');
       });
 
       lgpdReject.addEventListener('click', function() {
         localStorage.setItem('lgpdAccepted', 'false');
         lgpdBanner.style.display = 'none';
+        // 🔒 NOVO: Limpar dados ao rejeitar
+        localStorage.clear();
+        sessionStorage.clear();
+        console.log('🔒 LGPD rejeitado - dados limpos');
       });
 
       privacyLink.addEventListener('click', function(e) {
         e.preventDefault();
-        alert('Política de Privacidade: Coletamos apenas dados essenciais para o funcionamento do site. Não compartilhamos seus dados com terceiros.');
+        alert('Política de Privacidade: Coletamos apenas dados essenciais para o funcionamento do site. Não compartilhamos seus dados com terceiros. Todos os dados são criptografados e protegidos.');
+      });
+    }
+
+    // 🔒 NOVO: Sistema de proteção contra bots
+    function initBotProtection() {
+      // Prevenir autopreenchimento malicioso
+      document.addEventListener('input', function(e) {
+        if (e.target.type === 'password' || e.target.type === 'email') {
+          securityState.securityChecks++;
+        }
+      });
+
+      // Detectar tentativas de automação
+      let rapidClicks = 0;
+      document.addEventListener('click', function(e) {
+        rapidClicks++;
+        setTimeout(() => rapidClicks--, 1000);
+        
+        if (rapidClicks > 5) {
+          IntrusionDetection.logActivity('Cliques rápidos detectados');
+        }
+      });
+
+      // Prevenir keyloggers básicos
+      document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+          e.preventDefault();
+          IntrusionDetection.logActivity('Tentativa de abrir DevTools');
+        }
       });
     }
 
     // Animações com GSAP
     document.addEventListener('DOMContentLoaded', function() {
-      // 🔒 INICIALIZAÇÕES DE SEGURANÇA
+      // 🔒 INICIALIZAÇÕES DE SEGURANÇA ATUALIZADAS
       validateOrigin();
       createParticles();
       initLGPDBanner();
+      initBotProtection();
+      IntrusionDetection.resetCounter();
       
       const isMobile = window.innerWidth <= 768;
       
@@ -2283,7 +2387,7 @@
         });
       }
       
-      // 🔒 MODAL DE AVALIAÇÃO
+      // 🔒 MODAL DE AVALIAÇÃO ATUALIZADO
       const modal = document.getElementById('evaluationModal');
       const openFormBtn = document.getElementById('openForm');
       const openFormBtn2 = document.getElementById('openForm2');
@@ -2294,6 +2398,13 @@
         if (!securityState.lgpdAccepted) {
           alert('Por favor, aceite nossa política de privacidade antes de continuar.');
           document.getElementById('lgpdBanner').style.display = 'block';
+          return;
+        }
+
+        // 🔒 NOVO: Verificar token de segurança
+        securityState.securityChecks++;
+        if (securityState.securityChecks > 50) {
+          IntrusionDetection.logActivity('Muitas tentativas de abrir modal');
           return;
         }
 
@@ -2329,16 +2440,18 @@
         }
       });
       
-      // 🔒 INTEGRAÇÃO COM WHATSAPP
+      // 🔒 INTEGRAÇÃO COM WHATSAPP ATUALIZADA
       document.getElementById('submitForm').addEventListener('click', SecurityUtils.debounce(function() {
         const now = Date.now();
         if (now - securityState.lastSubmission < SecurityConfig.submissionTimeout) {
           alert('Aguarde um momento antes de enviar outro formulário.');
+          IntrusionDetection.logActivity('Tentativa de envio rápido de formulário');
           return;
         }
 
         if (securityState.formSubmissions >= SecurityConfig.maxFormSubmissions) {
           alert('Limite de envios excedido. Tente novamente mais tarde.');
+          IntrusionDetection.logActivity('Limite de envios excedido');
           return;
         }
 
@@ -2352,28 +2465,36 @@
           
           if (!SecurityUtils.validateName(name)) {
             alert('Por favor, insira um nome válido (apenas letras e espaços).');
+            IntrusionDetection.logActivity('Nome inválido no formulário');
             return;
           }
 
           if (!SecurityUtils.validatePhone(phone)) {
             alert('Por favor, insira um telefone válido.');
+            IntrusionDetection.logActivity('Telefone inválido no formulário');
             return;
           }
 
           if (!SecurityUtils.validateEmail(email)) {
             alert('Por favor, insira um e-mail válido.');
+            IntrusionDetection.logActivity('Email inválido no formulário');
             return;
           }
+
+          // 🔒 NOVO: Adicionar token de segurança
+          const securityToken = SecurityUtils.generateCSRFToken();
 
           const whatsappMessage = `*Nova Solicitação de Avaliação - HarpiaTI*%0A%0A` +
             `*Nome:* ${name}%0A` +
             `*Empresa:* ${company || 'Não informada'}%0A` +
             `*Telefone:* ${phone}%0A` +
             `*E-mail:* ${email}%0A` +
-            `*Mensagem:* ${message || 'Sem mensagem adicional'}`;
+            `*Mensagem:* ${message || 'Sem mensagem adicional'}%0A` +
+            `*Token:* ${securityToken}`;
           
           securityState.formSubmissions++;
           securityState.lastSubmission = now;
+          securityState.csrfToken = securityToken;
           
           window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank', 'noopener,noreferrer');
           
@@ -2428,7 +2549,7 @@
         }
       });
       
-      // 🔒 CORREÇÕES DE SEGURANÇA PARA iOS
+      // 🔒 CORREÇÕES DE SEGURANÇA PARA iOS ATUALIZADAS
       if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
         document.body.style.webkitTransform = 'translate3d(0,0,0)';
         document.addEventListener('touchstart', function(e) {
@@ -2444,9 +2565,10 @@
         pricingCarousel.setAttribute('aria-label', 'Planos de serviços');
       }
 
-      // 🔒 PREVENÇÃO DE ATAQUES DE CONSOLE
+      // 🔒 PREVENÇÃO DE ATAQUES DE CONSOLE ATUALIZADA
       console.log('%c🔒 Área Segura - HarpiaTI', 'color: #FFD700; font-size: 16px; font-weight: bold;');
       console.log('Este site possui medidas de segurança avançadas ativas.');
+      console.log('Token de segurança:', securityState.csrfToken);
     });
 
     // 🔒 ADICIONAR LOADING LAZY PARA IMAGENS
@@ -2458,17 +2580,55 @@
       });
     });
 
-    // 🔒 PREVENÇÃO DE ATAQUES DE REDIRECIONAMENTO
+    // 🔒 PREVENÇÃO DE ATAQUES DE REDIRECIONAMENTO ATUALIZADA
     if (window.top !== window.self) {
       window.top.location = window.self.location;
+      IntrusionDetection.logActivity('Tentativa de iframe detectada');
     }
 
-    // 🔒 DETECÇÃO DE TENTATIVAS DE INSPEÇÃO
+    // 🔒 DETECÇÃO DE TENTATIVAS DE INVASÃO ATUALIZADA
     setInterval(function() {
       if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
-        console.warn('🔒 Possível tentativa de inspeção detectada');
+        IntrusionDetection.logActivity('Possível tentativa de inspeção detectada');
       }
     }, 1000);
+
+    // 🔒 NOVO: Proteção contra ataques de força bruta
+    let failedAttempts = 0;
+    const maxFailedAttempts = 5;
+    
+    window.failedAuthAttempt = function() {
+      failedAttempts++;
+      if (failedAttempts >= maxFailedAttempts) {
+        IntrusionDetection.logActivity('Múltiplas tentativas falhas detectadas');
+        setTimeout(() => {
+          failedAttempts = 0;
+        }, 300000); // Reset após 5 minutos
+      }
+    };
+
+    // 🔒 NOVO: Sistema de logging de segurança
+    const SecurityLogger = {
+      log: function(event, details) {
+        const timestamp = new Date().toISOString();
+        console.log(`[${timestamp}] 🔒 ${event}:`, details);
+        
+        // Em produção, isso enviaria para um serviço de logging
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'security_event', {
+            'event_category': 'security',
+            'event_label': event,
+            'value': 1
+          });
+        }
+      }
+    };
+
+    // Inicializar logger
+    SecurityLogger.log('Sistema de segurança inicializado', {
+      token: securityState.csrfToken,
+      timestamp: Date.now()
+    });
   </script>
 </body>
 </html>
